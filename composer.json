@@ -1,0 +1,47 @@
+{
+  "name": "revolution/laravel-google-photos",
+  "description": "Google Photos API for Laravel",
+  "keywords": [
+    "google",
+    "photos",
+    "laravel"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0.0",
+    "pulkitjalan/google-apiclient": "^3.1",
+    "google/apiclient-services": "dev-master as v0.58",
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.0",
+    "mockery/mockery": "^1.0",
+    "orchestra/testbench": "~3.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Revolution\\Google\\Photos\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "kawax",
+      "email": "kawaxbiz@gmail.com"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Revolution\\Google\\Photos\\Providers\\PhotosServiceProvider"
+      ],
+      "aliases": {
+        "Photos": "Revolution\\Google\\Photos\\Facades\\Photos"
+      }
+    }
+  }
+}
