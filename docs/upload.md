@@ -1,6 +1,7 @@
 # Upload
 
 - https://developers.google.com/photos/library/guides/upload-media
+- https://developers.google.com/photos/library/guides/api-limits-quotas#photo-storage-quality
 - https://github.com/kawax/laravel-google-photos-project/blob/master/app/Http/Controllers/UploadController.php
 
 ## two-step process
