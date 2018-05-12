@@ -3,7 +3,7 @@
 https://github.com/kawax/laravel-google-photos-project/blob/master/app/Http/Controllers/Auth/LoginController.php
 
 
-```
+```php
 public function redirect()
 {
     return Socialite::driver('google')
