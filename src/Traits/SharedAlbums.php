@@ -5,6 +5,8 @@ namespace Revolution\Google\Photos\Traits;
 trait SharedAlbums
 {
     /**
+     * sharedAlbums.listSharedAlbums
+     *
      * @param array $optParams
      *
      * @return object

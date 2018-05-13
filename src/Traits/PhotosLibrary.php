@@ -3,7 +3,6 @@
 namespace Revolution\Google\Photos\Traits;
 
 use Revolution\Google\Photos\PhotosInterface;
-use PulkitJalan\Google\Facades\Google;
 
 /**
  * use at User model
@@ -18,13 +17,7 @@ trait PhotosLibrary
     {
         $token = $this->photosAccessToken();
 
-        Google::setAccessToken($token);
-
-        if (isset($token['refresh_token']) and Google::isAccessTokenExpired()) {
-            Google::fetchAccessTokenWithRefreshToken();
-        }
-
-        return app(PhotosInterface::class)->setService(Google::make('PhotosLibrary'));
+        return app(PhotosInterface::class)->setAccessToken($token);
     }
 
     /**

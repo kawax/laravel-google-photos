@@ -68,6 +68,17 @@ interface PhotosInterface
     public function getService(): Google_Service_PhotosLibrary;
 
     /**
+     * set access_token and set new service
+     *
+     * @param string|array $token
+     *
+     * @return $this
+     */
+    public function setAccessToken($token);
+
+    /**
+     * sharedAlbums.listSharedAlbums
+     *
      * @param array $optParams
      *
      * @return object
