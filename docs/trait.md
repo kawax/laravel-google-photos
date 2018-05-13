@@ -60,6 +60,8 @@ Trait has `photos()` that returns `Photos` instance.
                           ->photos()
                           ->listAlbums();
 
+        $albums = $albums->albums ?? [];
+
         return view('albums.index')->with(compact('albums'));
     }
 ```
