@@ -3,15 +3,16 @@
 namespace Revolution\Google\Photos\Traits;
 
 use GuzzleHttp\Client;
+use Psr\Http\Message\StreamInterface;
 
 trait Uploads
 {
     /**
      * Returns uploadToken
      *
-     * @param string                                            $name
-     * @param string|resource|\Psr\Http\Message\StreamInterface $file
-     * @param string                                            $endpoint
+     * @param string                          $name
+     * @param string|resource|StreamInterface $file
+     * @param string                          $endpoint
      *
      * @return string
      */
@@ -20,16 +21,14 @@ trait Uploads
         $file,
         string $endpoint = 'https://photoslibrary.googleapis.com/v1/uploads'
     ): string {
-        $token = $this->getService()->getClient()->getAccessToken();
+        /**
+         * @var Client $client
+         */
+        $client = $this->getService()->getClient()->authorize();
 
-        if (is_array($token)) {
-            $token = $token['access_token'];
-        }
-
-        $response = (new Client)->post($endpoint, [
+        $response = $client->post($endpoint, [
             'headers' => [
                 'Content-type'            => 'application/octet-stream',
-                'Authorization'           => 'Bearer ' . $token,
                 'X-Goog-Upload-File-Name' => $name,
             ],
             'body'    => $file,
