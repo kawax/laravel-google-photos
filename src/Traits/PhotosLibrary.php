@@ -10,8 +10,7 @@ use Revolution\Google\Photos\PhotosInterface;
 trait PhotosLibrary
 {
     /**
-     * @return \Revolution\Google\Photos\PhotosInterface
-     * @throws \Exception
+     * @return PhotosInterface
      */
     public function photos()
     {
