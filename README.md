@@ -1,4 +1,4 @@
-# Google Photos for Laravel
+# Google Photos API for Laravel
 
 [![Build Status](https://travis-ci.org/kawax/laravel-google-photos.svg?branch=master)](https://travis-ci.org/kawax/laravel-google-photos)
 
@@ -33,7 +33,7 @@ php artisan vendor:publish --provider="PulkitJalan\Google\GoogleServiceProvider"
 ```
 
 ### config/google.php
-```
+```php
     'client_id'        => env('GOOGLE_CLIENT_ID', ''),
     'client_secret'    => env('GOOGLE_CLIENT_SECRET', ''),
     'redirect_uri'     => env('GOOGLE_REDIRECT', ''),
@@ -45,7 +45,7 @@ php artisan vendor:publish --provider="PulkitJalan\Google\GoogleServiceProvider"
 
 ### config/service.php for Socialite
 
-```
+```php
     'google' => [
         'client_id'     => env('GOOGLE_CLIENT_ID', ''),
         'client_secret' => env('GOOGLE_CLIENT_SECRET', ''),
@@ -54,14 +54,13 @@ php artisan vendor:publish --provider="PulkitJalan\Google\GoogleServiceProvider"
 ```
 
 ### Configure .env as needed
+```
+GOOGLE_APPLICATION_NAME=
 
-        GOOGLE_APPLICATION_NAME=
-        GOOGLE_CLIENT_ID=
-        GOOGLE_CLIENT_SECRET=
-        GOOGLE_REDIRECT=
-        GOOGLE_DEVELOPER_KEY=
-        GOOGLE_SERVICE_ENABLED=
-        GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REDIRECT=
+```
 
 ## Demo
 https://github.com/kawax/laravel-google-photos-project
