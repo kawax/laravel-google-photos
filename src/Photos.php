@@ -5,12 +5,12 @@ namespace Revolution\Google\Photos;
 use Illuminate\Container\Container;
 use Illuminate\Support\Traits\Macroable;
 
-use Revolution\Google\Photos\Contracts\Photos as PhotosContract;
+use Revolution\Google\Photos\Contracts\Factory;
 
 use Google_Service_PhotosLibrary;
 use PulkitJalan\Google\Client;
 
-class Photos implements PhotosContract
+class Photos implements Factory
 {
     use Traits\Albums;
     use Traits\MediaItems;

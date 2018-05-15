@@ -5,7 +5,7 @@ namespace Revolution\Google\Photos\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use Revolution\Google\Photos\Photos;
-use Revolution\Google\Photos\Contracts\Photos as PhotosContract;
+use Revolution\Google\Photos\Contracts\Factory;
 
 class PhotosServiceProvider extends ServiceProvider
 {
@@ -30,12 +30,12 @@ class PhotosServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(PhotosContract::class, function ($app) {
+        $this->app->singleton(Factory::class, function ($app) {
             return new Photos();
         });
 
         $this->app->alias(
-            Photos::class, PhotosContract::class
+            Photos::class, Factory::class
         );
     }
 
@@ -46,6 +46,6 @@ class PhotosServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [PhotosContract::class];
+        return [Factory::class];
     }
 }

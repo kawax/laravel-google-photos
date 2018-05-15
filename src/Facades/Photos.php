@@ -4,7 +4,7 @@ namespace Revolution\Google\Photos\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-use Revolution\Google\Photos\Contracts\Photos as PhotosContract;
+use Revolution\Google\Photos\Contracts\Factory;
 
 class Photos extends Facade
 {
@@ -15,6 +15,6 @@ class Photos extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return PhotosContract::class;
+        return Factory::class;
     }
 }

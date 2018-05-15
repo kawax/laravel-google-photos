@@ -4,7 +4,7 @@ namespace Revolution\Google\Photos\Contracts;
 
 use Google_Service_PhotosLibrary;
 
-interface Photos
+interface Factory
 {
     /**
      * albums.listAlbums
