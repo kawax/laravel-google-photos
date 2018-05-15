@@ -2,12 +2,15 @@
 
 namespace Revolution\Google\Photos;
 
-use Google_Service_PhotosLibrary;
-use PulkitJalan\Google\Facades\Google;
-
+use Illuminate\Container\Container;
 use Illuminate\Support\Traits\Macroable;
 
-class Photos implements PhotosInterface
+use Revolution\Google\Photos\Contracts\Photos as PhotosContract;
+
+use Google_Service_PhotosLibrary;
+use PulkitJalan\Google\Client;
+
+class Photos implements PhotosContract
 {
     use Traits\Albums;
     use Traits\MediaItems;
@@ -47,15 +50,21 @@ class Photos implements PhotosInterface
      * @param string|array $token
      *
      * @return $this
+     * @throws \Exception
      */
     public function setAccessToken($token)
     {
-        Google::setAccessToken($token);
+        /**
+         * @var Client $google
+         */
+        $google = Container::getInstance()->make(Client::class);
 
-        if (isset($token['refresh_token']) and Google::isAccessTokenExpired()) {
-            Google::fetchAccessTokenWithRefreshToken();
+        $google->setAccessToken($token);
+
+        if (isset($token['refresh_token']) and $google->isAccessTokenExpired()) {
+            $google->fetchAccessTokenWithRefreshToken();
         }
 
-        return $this->setService(Google::make('PhotosLibrary'));
+        return $this->setService($google->make('PhotosLibrary'));
     }
 }

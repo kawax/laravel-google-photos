@@ -1,10 +1,10 @@
 <?php
 
-namespace Revolution\Google\Photos;
+namespace Revolution\Google\Photos\Contracts;
 
 use Google_Service_PhotosLibrary;
 
-interface PhotosInterface
+interface Photos
 {
     /**
      * albums.listAlbums

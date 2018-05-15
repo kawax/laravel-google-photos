@@ -5,14 +5,22 @@ namespace Tests;
 use Mockery as m;
 
 use Photos;
-use Google;
+use PulkitJalan\Google\Client;
 
 class PhotosTest extends TestCase
 {
-    //    protected function setUp()
-    //    {
-    //        parent::setUp();
-    //    }
+    /**
+     * @var Client
+     */
+    protected $google;
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->google = m::mock(Client::class);
+        app()->instance(Client::class, $this->google);
+    }
 
     public function tearDown()
     {
@@ -28,10 +36,26 @@ class PhotosTest extends TestCase
 
     public function testService()
     {
-        Google::shouldReceive('make')->once()->andReturns(m::mock(\Google_Service_PhotosLibrary::class));
+        $this->google->shouldReceive('make')->once()->andReturns(m::mock(\Google_Service_PhotosLibrary::class));
 
-        Photos::setService(Google::make('PhotosLibrary'));
+        Photos::setService($this->google->make('PhotosLibrary'));
 
         $this->assertInstanceOf(\Google_Service_PhotosLibrary::class, Photos::getService());
+    }
+
+    public function testSetAccessToken()
+    {
+        $this->google->shouldReceive('setAccessToken')->once();
+        $this->google->shouldReceive('isAccessTokenExpired')->once()->andReturns(true);
+        $this->google->shouldReceive('fetchAccessTokenWithRefreshToken')->once();
+        $this->google->shouldReceive('make')->once()->andReturns(m::mock(\Google_Service_PhotosLibrary::class));
+
+
+        $photos = Photos::setAccessToken([
+            'access_token'  => 'test',
+            'refresh_token' => 'test',
+        ]);
+
+        $this->assertInstanceOf(\Google_Service_PhotosLibrary::class, $photos->getService());
     }
 }

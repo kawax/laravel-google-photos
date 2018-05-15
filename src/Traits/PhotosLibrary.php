@@ -2,7 +2,7 @@
 
 namespace Revolution\Google\Photos\Traits;
 
-use Revolution\Google\Photos\PhotosInterface;
+use Revolution\Google\Photos\Contracts\Photos;
 
 /**
  * use at User model
@@ -10,13 +10,13 @@ use Revolution\Google\Photos\PhotosInterface;
 trait PhotosLibrary
 {
     /**
-     * @return PhotosInterface
+     * @return Photos
      */
     public function photos()
     {
         $token = $this->photosAccessToken();
 
-        return app(PhotosInterface::class)->setAccessToken($token);
+        return app(Photos::class)->setAccessToken($token);
     }
 
     /**
