@@ -16,6 +16,16 @@ interface Factory
     public function listAlbums($optParams = []);
 
     /**
+     * albums.create
+     *
+     * @param array $createParams
+     * @param array $optParams
+     *
+     * @return object
+     */
+    public function createAlbum($createParams = ['isWriteable' => true], $optParams = []);
+
+    /**
      * albums.get
      *
      * @param string $albumId
