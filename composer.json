@@ -10,8 +10,7 @@
   "require": {
     "php": ">=7.0.0",
     "pulkitjalan/google-apiclient": "^3.1",
-    "guzzlehttp/guzzle": "^6.3",
-    "google/apiclient-services": "^0.59.0"
+    "guzzlehttp/guzzle": "^6.3"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.0",
