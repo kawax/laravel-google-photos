@@ -59,6 +59,8 @@ class Photos implements Factory
          */
         $google = Container::getInstance()->make(Client::class);
 
+        $google->getCache()->clear();
+
         $google->setAccessToken($token);
 
         if (isset($token['refresh_token']) and $google->isAccessTokenExpired()) {
@@ -66,5 +68,13 @@ class Photos implements Factory
         }
 
         return $this->setService($google->make('PhotosLibrary'));
+    }
+
+    /**
+     * @return array
+     */
+    public function getAccessToken()
+    {
+        return $this->getService()->getClient()->getAccessToken();
     }
 }
