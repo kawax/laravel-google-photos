@@ -25,7 +25,7 @@ https://github.com/google/google-api-php-client-services/tree/master/src/Google/
 
 ### Get API Credentials
 from https://developers.google.com/console  
-Enable `Photos Library API`, ` People API` and `Google+ API`.
+Enable `Photos Library API`, ` People API`.
 
 ### publish config file
 ```
