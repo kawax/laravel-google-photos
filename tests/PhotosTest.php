@@ -14,7 +14,7 @@ class PhotosTest extends TestCase
      */
     protected $google;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -22,7 +22,7 @@ class PhotosTest extends TestCase
         app()->instance(Client::class, $this->google);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

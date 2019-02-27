@@ -2,6 +2,7 @@
 
 namespace Revolution\Google\Photos\Traits;
 
+use Illuminate\Container\Container;
 use Revolution\Google\Photos\Contracts\Factory;
 
 /**
@@ -16,7 +17,7 @@ trait PhotosLibrary
     {
         $token = $this->photosAccessToken();
 
-        return app(Factory::class)->setAccessToken($token);
+        return Container::getInstance()->make(Factory::class)->setAccessToken($token);
     }
 
     /**

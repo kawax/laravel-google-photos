@@ -3,24 +3,18 @@
 namespace Revolution\Google\Photos\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Revolution\Google\Photos\Photos;
 use Revolution\Google\Photos\Contracts\Factory;
 
-class PhotosServiceProvider extends ServiceProvider
+class PhotosServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
     /**
      * Boot the service provider.
      */
     public function boot()
     {
+        //
     }
 
     /**
@@ -33,10 +27,6 @@ class PhotosServiceProvider extends ServiceProvider
         $this->app->singleton(Factory::class, function ($app) {
             return new Photos();
         });
-
-        $this->app->alias(
-            Photos::class, Factory::class
-        );
     }
 
     /**
