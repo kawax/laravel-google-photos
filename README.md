@@ -1,6 +1,9 @@
 # Google Photos API for Laravel
 
 [![Build Status](https://travis-ci.org/kawax/laravel-google-photos.svg?branch=master)](https://travis-ci.org/kawax/laravel-google-photos)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ac9912fd1c3bfa21a7d3/maintainability)](https://codeclimate.com/github/kawax/laravel-google-photos/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ac9912fd1c3bfa21a7d3/test_coverage)](https://codeclimate.com/github/kawax/laravel-google-photos/test_coverage)
+
 
 https://developers.google.com/photos/
 
