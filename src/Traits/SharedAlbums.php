@@ -7,7 +7,7 @@ trait SharedAlbums
     /**
      * sharedAlbums.listSharedAlbums
      *
-     * @param array $optParams
+     * @param  array  $optParams
      *
      * @return object
      */

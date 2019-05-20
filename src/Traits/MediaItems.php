@@ -12,8 +12,8 @@ trait MediaItems
     /**
      * mediaItems.search
      *
-     * @param array $searchParams
-     * @param array $optParams
+     * @param  array  $searchParams
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -27,8 +27,8 @@ trait MediaItems
     /**
      * mediaItems.get
      *
-     * @param string $mediaItemId
-     * @param array  $optParams
+     * @param  string  $mediaItemId
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -40,9 +40,9 @@ trait MediaItems
     /**
      * mediaItems.batchCreate
      *
-     * @param array  $uploadTokens
-     * @param string $albumId
-     * @param array  $optParams
+     * @param  array  $uploadTokens
+     * @param  string  $albumId
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -63,7 +63,7 @@ trait MediaItems
     }
 
     /**
-     * @param string $uploadToken
+     * @param  string  $uploadToken
      *
      * @return \Google_Service_PhotosLibrary_NewMediaItem
      */

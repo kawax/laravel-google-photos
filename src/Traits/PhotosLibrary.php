@@ -12,6 +12,7 @@ trait PhotosLibrary
 {
     /**
      * @return Factory
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function photos()
     {

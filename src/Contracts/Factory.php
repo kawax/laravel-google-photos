@@ -9,7 +9,7 @@ interface Factory
     /**
      * albums.listAlbums
      *
-     * @param array $optParams
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -18,8 +18,8 @@ interface Factory
     /**
      * albums.create
      *
-     * @param array $createParams
-     * @param array $optParams
+     * @param  array  $createParams
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -28,7 +28,7 @@ interface Factory
     /**
      * albums.get
      *
-     * @param string $albumId
+     * @param  string  $albumId
      *
      * @return object
      */
@@ -37,8 +37,8 @@ interface Factory
     /**
      * mediaItems.search
      *
-     * @param array $searchParams
-     * @param array $optParams
+     * @param  array  $searchParams
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -47,8 +47,8 @@ interface Factory
     /**
      * mediaItems.get
      *
-     * @param string $mediaItemId
-     * @param array  $optParams
+     * @param  string  $mediaItemId
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -57,16 +57,16 @@ interface Factory
     /**
      * mediaItems.batchCreate
      *
-     * @param array  $uploadTokens
-     * @param string $albumId
-     * @param array  $optParams
+     * @param  array  $uploadTokens
+     * @param  string  $albumId
+     * @param  array  $optParams
      *
      * @return object
      */
     public function batchCreate(array $uploadTokens, string $albumId = '', $optParams = []);
 
     /**
-     * @param Google_Service_PhotosLibrary|\Google_Service $service
+     * @param  Google_Service_PhotosLibrary|\Google_Service  $service
      *
      * @return $this
      */
@@ -80,7 +80,7 @@ interface Factory
     /**
      * set access_token and set new service
      *
-     * @param string|array $token
+     * @param  string|array  $token
      *
      * @return $this
      */
@@ -89,7 +89,7 @@ interface Factory
     /**
      * sharedAlbums.listSharedAlbums
      *
-     * @param array $optParams
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -98,9 +98,9 @@ interface Factory
     /**
      * Returns uploadToken
      *
-     * @param string                                            $name
-     * @param string|resource|\Psr\Http\Message\StreamInterface $file
-     * @param string                                            $endpoint
+     * @param  string  $name
+     * @param  string|resource|\Psr\Http\Message\StreamInterface  $file
+     * @param  string  $endpoint
      *
      * @return string
      */

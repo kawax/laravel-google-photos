@@ -4,7 +4,7 @@ namespace Tests;
 
 use Mockery as m;
 
-use Photos;
+use Revolution\Google\Photos\Facades\Photos;
 use PulkitJalan\Google\Client;
 
 class PhotosTest extends TestCase

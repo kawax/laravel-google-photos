@@ -10,9 +10,9 @@ trait Uploads
     /**
      * Returns uploadToken
      *
-     * @param string                          $name
-     * @param string|resource|StreamInterface $file
-     * @param string                          $endpoint
+     * @param  string  $name
+     * @param  string|resource|StreamInterface  $file
+     * @param  string  $endpoint
      *
      * @return string
      */

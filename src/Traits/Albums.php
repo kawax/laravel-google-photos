@@ -10,7 +10,7 @@ trait Albums
     /**
      * albums.listAlbums
      *
-     * @param array $optParams
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -22,8 +22,8 @@ trait Albums
     /**
      * albums.create
      *
-     * @param array $createParams
-     * @param array $optParams
+     * @param  array  $createParams
+     * @param  array  $optParams
      *
      * @return object
      */
@@ -39,7 +39,7 @@ trait Albums
     /**
      * albums.get
      *
-     * @param string $albumId
+     * @param  string  $albumId
      *
      * @return object
      */

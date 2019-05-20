@@ -25,7 +25,7 @@ class Photos implements Factory
     protected $service;
 
     /**
-     * @param Google_Service_PhotosLibrary|\Google_Service $service
+     * @param  Google_Service_PhotosLibrary|\Google_Service  $service
      *
      * @return $this
      */
@@ -47,7 +47,7 @@ class Photos implements Factory
     /**
      * set access_token and set new service
      *
-     * @param string|array $token
+     * @param  string|array  $token
      *
      * @return $this
      * @throws \Exception
