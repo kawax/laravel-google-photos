@@ -46,6 +46,8 @@ php artisan vendor:publish --provider="PulkitJalan\Google\GoogleServiceProvider"
     'prompt'           => 'consent', //"none", "consent", "select_account" default:none
 ```
 
+Google Photos API does not support Service Account.
+
 ### config/service.php for Socialite
 
 ```php
