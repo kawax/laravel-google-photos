@@ -4,6 +4,7 @@ namespace Revolution\Google\Photos\Traits;
 
 use Google_Service_PhotosLibrary_CreateAlbumRequest as CreateAlbumRequest;
 use Google_Service_PhotosLibrary_Album as Album;
+use Google_Service_PhotosLibrary_Resource_Albums as Resource_Albums;
 
 trait Albums
 {
@@ -14,9 +15,9 @@ trait Albums
      *
      * @return object
      */
-    public function listAlbums($optParams = [])
+    public function listAlbums(array $optParams = [])
     {
-        return $this->getService()->albums->listAlbums($optParams)->toSimpleObject();
+        return $this->serviceAlbums()->listAlbums($optParams)->toSimpleObject();
     }
 
     /**
@@ -27,13 +28,13 @@ trait Albums
      *
      * @return object
      */
-    public function createAlbum($createParams = ['isWriteable' => true], $optParams = [])
+    public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = [])
     {
         $album = new Album($createParams);
         $request = new CreateAlbumRequest;
         $request->setAlbum($album);
 
-        return $this->getService()->albums->create($request, $optParams)->toSimpleObject();
+        return $this->serviceAlbums()->create($request, $optParams)->toSimpleObject();
     }
 
     /**
@@ -45,6 +46,14 @@ trait Albums
      */
     public function album(string $albumId)
     {
-        return $this->getService()->albums->get($albumId)->toSimpleObject();
+        return $this->serviceAlbums()->get($albumId)->toSimpleObject();
+    }
+
+    /**
+     * @return Resource_Albums
+     */
+    protected function serviceAlbums(): Resource_Albums
+    {
+        return $this->getService()->albums;
     }
 }

@@ -13,7 +13,7 @@ interface Factory
      *
      * @return object
      */
-    public function listAlbums($optParams = []);
+    public function listAlbums(array $optParams = []);
 
     /**
      * albums.create
@@ -23,7 +23,7 @@ interface Factory
      *
      * @return object
      */
-    public function createAlbum($createParams = ['isWriteable' => true], $optParams = []);
+    public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = []);
 
     /**
      * albums.get
@@ -42,7 +42,7 @@ interface Factory
      *
      * @return object
      */
-    public function search($searchParams = [], $optParams = []);
+    public function search(array $searchParams = [], array $optParams = []);
 
     /**
      * mediaItems.get
@@ -52,7 +52,7 @@ interface Factory
      *
      * @return object
      */
-    public function media(string $mediaItemId, $optParams = []);
+    public function media(string $mediaItemId, array $optParams = []);
 
     /**
      * mediaItems.batchCreate
@@ -63,7 +63,7 @@ interface Factory
      *
      * @return object
      */
-    public function batchCreate(array $uploadTokens, string $albumId = '', $optParams = []);
+    public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = []);
 
     /**
      * @param  Google_Service_PhotosLibrary|\Google_Service  $service
@@ -93,7 +93,7 @@ interface Factory
      *
      * @return object
      */
-    public function listSharedAlbums($optParams = []);
+    public function listSharedAlbums(array $optParams = []);
 
     /**
      * Returns uploadToken

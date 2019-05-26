@@ -20,7 +20,7 @@ class Photos implements Factory
     use Macroable;
 
     /**
-     * @var \Google_Service_PhotosLibrary
+     * @var Google_Service_PhotosLibrary
      */
     protected $service;
 

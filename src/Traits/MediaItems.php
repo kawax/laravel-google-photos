@@ -6,6 +6,7 @@ use Google_Service_PhotosLibrary_SearchMediaItemsRequest as SearchMediaItemsRequ
 use Google_Service_PhotosLibrary_BatchCreateMediaItemsRequest as BatchCreateMediaItemsRequest;
 use Google_Service_PhotosLibrary_SimpleMediaItem as SimpleMediaItem;
 use Google_Service_PhotosLibrary_NewMediaItem as NewMediaItem;
+use Google_Service_PhotosLibrary_Resource_MediaItems as Resource_MediaItems;
 
 trait MediaItems
 {
@@ -17,11 +18,11 @@ trait MediaItems
      *
      * @return object
      */
-    public function search($searchParams = [], $optParams = [])
+    public function search(array $searchParams = [], array $optParams = [])
     {
         $search = new SearchMediaItemsRequest($searchParams);
 
-        return $this->getService()->mediaItems->search($search, $optParams)->toSimpleObject();
+        return $this->serviceMediaItems()->search($search, $optParams)->toSimpleObject();
     }
 
     /**
@@ -32,9 +33,9 @@ trait MediaItems
      *
      * @return object
      */
-    public function media(string $mediaItemId, $optParams = [])
+    public function media(string $mediaItemId, array $optParams = [])
     {
-        return $this->getService()->mediaItems->get($mediaItemId, $optParams)->toSimpleObject();
+        return $this->serviceMediaItems()->get($mediaItemId, $optParams)->toSimpleObject();
     }
 
     /**
@@ -46,7 +47,7 @@ trait MediaItems
      *
      * @return object
      */
-    public function batchCreate(array $uploadTokens, string $albumId = '', $optParams = [])
+    public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = [])
     {
         $newMediaItems = [];
 
@@ -59,15 +60,23 @@ trait MediaItems
             'albumId'       => $albumId,
         ]);
 
-        return $this->getService()->mediaItems->batchCreate($request, $optParams)->toSimpleObject();
+        return $this->serviceMediaItems()->batchCreate($request, $optParams)->toSimpleObject();
+    }
+
+    /**
+     * @return Resource_MediaItems
+     */
+    protected function serviceMediaItems(): Resource_MediaItems
+    {
+        return $this->getService()->mediaItems;
     }
 
     /**
      * @param  string  $uploadToken
      *
-     * @return \Google_Service_PhotosLibrary_NewMediaItem
+     * @return NewMediaItem
      */
-    private function prepareCreate(string $uploadToken)
+    protected function prepareCreate(string $uploadToken): NewMediaItem
     {
         $simple = new SimpleMediaItem([
             'uploadToken' => $uploadToken,

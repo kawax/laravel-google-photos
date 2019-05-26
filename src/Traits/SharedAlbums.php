@@ -2,6 +2,8 @@
 
 namespace Revolution\Google\Photos\Traits;
 
+use Google_Service_PhotosLibrary_Resource_SharedAlbums as Resource_SharedAlbums;
+
 trait SharedAlbums
 {
     /**
@@ -11,8 +13,16 @@ trait SharedAlbums
      *
      * @return object
      */
-    public function listSharedAlbums($optParams = [])
+    public function listSharedAlbums(array $optParams = [])
     {
-        return $this->getService()->sharedAlbums->listSharedAlbums($optParams)->toSimpleObject();
+        return $this->serviceSharedAlbums()->listSharedAlbums($optParams)->toSimpleObject();
+    }
+
+    /**
+     * @return Resource_SharedAlbums
+     */
+    protected function serviceSharedAlbums(): Resource_SharedAlbums
+    {
+        return $this->getService()->sharedAlbums;
     }
 }
