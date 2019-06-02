@@ -28,7 +28,7 @@ https://github.com/google/google-api-php-client-services/tree/master/src/Google/
 
 ### Get API Credentials
 from https://developers.google.com/console  
-Enable `Photos Library API`, ` People API`.
+Enable `Photos Library API`.
 
 ### publish config file
 ```
@@ -72,6 +72,10 @@ https://github.com/kawax/laravel-google-photos-project
 
 ## Usage
 See demo project and docs.
+
+Or another Google API Series.
+- https://github.com/kawax/laravel-google-sheets
+- https://github.com/kawax/laravel-google-searchconsole
 
 
 ## LICENSE
