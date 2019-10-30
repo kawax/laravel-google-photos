@@ -19,14 +19,10 @@
             <directory suffix=".php">src/</directory>
             <exclude>
                 <directory suffix=".php">src/Providers/</directory>
-                <directory suffix=".php">src/Facades/</directory>
                 <directory suffix=".php">src/Contracts/</directory>
             </exclude>
         </whitelist>
     </filter>
-    <php>
-        <env name="DB_CONNECTION" value="testing"/>
-    </php>
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
     </logging>
