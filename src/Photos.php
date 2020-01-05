@@ -12,10 +12,10 @@ use PulkitJalan\Google\Client;
 
 class Photos implements Factory
 {
-    use Traits\Albums;
-    use Traits\MediaItems;
-    use Traits\SharedAlbums;
-    use Traits\Uploads;
+    use Concerns\Albums;
+    use Concerns\MediaItems;
+    use Concerns\SharedAlbums;
+    use Concerns\Uploads;
 
     use Macroable;
 
