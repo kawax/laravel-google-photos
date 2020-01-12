@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Revolution\Google\Photos\Tests;
 
 use Revolution\Google\Photos\Providers\PhotosServiceProvider;
 use Revolution\Google\Photos\Facades\Photos;
