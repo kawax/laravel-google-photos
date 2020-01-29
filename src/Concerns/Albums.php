@@ -31,7 +31,7 @@ trait Albums
     public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = [])
     {
         $album = new Album($createParams);
-        $request = new CreateAlbumRequest;
+        $request = new CreateAlbumRequest();
         $request->setAlbum($album);
 
         return $this->serviceAlbums()->create($request, $optParams)->toSimpleObject();
