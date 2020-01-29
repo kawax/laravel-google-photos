@@ -11,6 +11,11 @@ https://developers.google.com/photos/
 - PHP >= 7.2
 - Laravel >= 5.8
 
+## Versioning
+- Basic : semver
+- Drop old PHP or Laravel version : `+0.1`. composer should handle it well.
+- Support only latest major version (`master` branch), but you can PR to old branches.
+
 ## Installation
 
 ```
