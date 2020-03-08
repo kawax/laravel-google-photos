@@ -2,12 +2,10 @@
 
 namespace Revolution\Google\Photos\Tests;
 
-use Mockery as m;
-
-use Revolution\Google\Photos\Photos;
-
 use Google_Service_PhotosLibrary;
 use Google_Service_PhotosLibrary_Resource_MediaItems as MediaItems;
+use Mockery as m;
+use Revolution\Google\Photos\Photos;
 
 class MediaItemsTest extends TestCase
 {

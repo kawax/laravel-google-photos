@@ -7,7 +7,7 @@ use Google_Service_PhotosLibrary;
 interface Factory
 {
     /**
-     * albums.listAlbums
+     * albums.listAlbums.
      *
      * @param  array  $optParams
      *
@@ -16,7 +16,7 @@ interface Factory
     public function listAlbums(array $optParams = []);
 
     /**
-     * albums.create
+     * albums.create.
      *
      * @param  array  $createParams
      * @param  array  $optParams
@@ -26,7 +26,7 @@ interface Factory
     public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = []);
 
     /**
-     * albums.get
+     * albums.get.
      *
      * @param  string  $albumId
      *
@@ -35,7 +35,7 @@ interface Factory
     public function album(string $albumId);
 
     /**
-     * mediaItems.search
+     * mediaItems.search.
      *
      * @param  array  $searchParams
      * @param  array  $optParams
@@ -45,7 +45,7 @@ interface Factory
     public function search(array $searchParams = [], array $optParams = []);
 
     /**
-     * mediaItems.get
+     * mediaItems.get.
      *
      * @param  string  $mediaItemId
      * @param  array  $optParams
@@ -55,7 +55,7 @@ interface Factory
     public function media(string $mediaItemId, array $optParams = []);
 
     /**
-     * mediaItems.batchCreate
+     * mediaItems.batchCreate.
      *
      * @param  array  $uploadTokens
      * @param  string  $albumId
@@ -78,7 +78,7 @@ interface Factory
     public function getService(): Google_Service_PhotosLibrary;
 
     /**
-     * set access_token and set new service
+     * set access_token and set new service.
      *
      * @param  string|array  $token
      *
@@ -87,7 +87,7 @@ interface Factory
     public function setAccessToken($token);
 
     /**
-     * sharedAlbums.listSharedAlbums
+     * sharedAlbums.listSharedAlbums.
      *
      * @param  array  $optParams
      *
@@ -96,7 +96,7 @@ interface Factory
     public function listSharedAlbums(array $optParams = []);
 
     /**
-     * Returns uploadToken
+     * Returns uploadToken.
      *
      * @param  string  $name
      * @param  string|resource|\Psr\Http\Message\StreamInterface  $file

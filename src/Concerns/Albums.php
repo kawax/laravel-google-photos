@@ -2,14 +2,14 @@
 
 namespace Revolution\Google\Photos\Concerns;
 
-use Google_Service_PhotosLibrary_CreateAlbumRequest as CreateAlbumRequest;
 use Google_Service_PhotosLibrary_Album as Album;
+use Google_Service_PhotosLibrary_CreateAlbumRequest as CreateAlbumRequest;
 use Google_Service_PhotosLibrary_Resource_Albums as Resource_Albums;
 
 trait Albums
 {
     /**
-     * albums.listAlbums
+     * albums.listAlbums.
      *
      * @param  array  $optParams
      *
@@ -21,7 +21,7 @@ trait Albums
     }
 
     /**
-     * albums.create
+     * albums.create.
      *
      * @param  array  $createParams
      * @param  array  $optParams
@@ -38,7 +38,7 @@ trait Albums
     }
 
     /**
-     * albums.get
+     * albums.get.
      *
      * @param  string  $albumId
      *

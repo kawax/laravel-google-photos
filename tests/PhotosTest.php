@@ -3,9 +3,8 @@
 namespace Revolution\Google\Photos\Tests;
 
 use Mockery as m;
-
-use Revolution\Google\Photos\Facades\Photos;
 use PulkitJalan\Google\Client;
+use Revolution\Google\Photos\Facades\Photos;
 
 class PhotosTest extends TestCase
 {
@@ -51,7 +50,6 @@ class PhotosTest extends TestCase
         $this->google->shouldReceive('isAccessTokenExpired')->once()->andReturns(true);
         $this->google->shouldReceive('fetchAccessTokenWithRefreshToken')->once();
         $this->google->shouldReceive('make')->once()->andReturns(m::mock(\Google_Service_PhotosLibrary::class));
-
 
         $photos = Photos::setAccessToken([
             'access_token'  => 'test',

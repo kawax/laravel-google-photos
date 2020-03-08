@@ -7,7 +7,7 @@ use Google_Service_PhotosLibrary_Resource_SharedAlbums as Resource_SharedAlbums;
 trait SharedAlbums
 {
     /**
-     * sharedAlbums.listSharedAlbums
+     * sharedAlbums.listSharedAlbums.
      *
      * @param  array  $optParams
      *

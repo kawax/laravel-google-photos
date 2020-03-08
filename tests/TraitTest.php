@@ -3,7 +3,6 @@
 namespace Revolution\Google\Photos\Tests;
 
 use Mockery as m;
-
 use Revolution\Google\Photos\Facades\Photos;
 use Revolution\Google\Photos\Traits\PhotosLibrary;
 

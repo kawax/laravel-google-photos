@@ -2,16 +2,16 @@
 
 namespace Revolution\Google\Photos\Concerns;
 
-use Google_Service_PhotosLibrary_SearchMediaItemsRequest as SearchMediaItemsRequest;
 use Google_Service_PhotosLibrary_BatchCreateMediaItemsRequest as BatchCreateMediaItemsRequest;
-use Google_Service_PhotosLibrary_SimpleMediaItem as SimpleMediaItem;
 use Google_Service_PhotosLibrary_NewMediaItem as NewMediaItem;
 use Google_Service_PhotosLibrary_Resource_MediaItems as Resource_MediaItems;
+use Google_Service_PhotosLibrary_SearchMediaItemsRequest as SearchMediaItemsRequest;
+use Google_Service_PhotosLibrary_SimpleMediaItem as SimpleMediaItem;
 
 trait MediaItems
 {
     /**
-     * mediaItems.search
+     * mediaItems.search.
      *
      * @param  array  $searchParams
      * @param  array  $optParams
@@ -26,7 +26,7 @@ trait MediaItems
     }
 
     /**
-     * mediaItems.get
+     * mediaItems.get.
      *
      * @param  string  $mediaItemId
      * @param  array  $optParams
@@ -39,7 +39,7 @@ trait MediaItems
     }
 
     /**
-     * mediaItems.batchCreate
+     * mediaItems.batchCreate.
      *
      * @param  array  $uploadTokens
      * @param  string  $albumId

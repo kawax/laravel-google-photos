@@ -6,7 +6,7 @@ use Illuminate\Container\Container;
 use Revolution\Google\Photos\Contracts\Factory;
 
 /**
- * use at User model
+ * use at User model.
  */
 trait PhotosLibrary
 {
@@ -22,7 +22,7 @@ trait PhotosLibrary
     }
 
     /**
-     * Get the Access Token
+     * Get the Access Token.
      *
      * @return string|array
      */

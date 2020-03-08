@@ -2,11 +2,10 @@
 
 namespace Revolution\Google\Photos\Tests;
 
-use Revolution\Google\Photos\Providers\PhotosServiceProvider;
-use Revolution\Google\Photos\Facades\Photos;
-
-use PulkitJalan\Google\GoogleServiceProvider;
 use PulkitJalan\Google\Facades\Google;
+use PulkitJalan\Google\GoogleServiceProvider;
+use Revolution\Google\Photos\Facades\Photos;
+use Revolution\Google\Photos\Providers\PhotosServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

@@ -3,7 +3,6 @@
 namespace Revolution\Google\Photos\Facades;
 
 use Illuminate\Support\Facades\Facade;
-
 use Revolution\Google\Photos\Contracts\Factory;
 
 class Photos extends Facade

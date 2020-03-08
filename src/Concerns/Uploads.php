@@ -8,7 +8,7 @@ use Psr\Http\Message\StreamInterface;
 trait Uploads
 {
     /**
-     * Returns uploadToken
+     * Returns uploadToken.
      *
      * @param  string  $name
      * @param  string|resource|StreamInterface  $file
