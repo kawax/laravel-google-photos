@@ -2,11 +2,10 @@
 
 namespace Revolution\Google\Photos\Tests;
 
-use Mockery as m;
-
-use Revolution\Google\Photos\Photos;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use Mockery as m;
+use Revolution\Google\Photos\Photos;
 
 class UploadTest extends TestCase
 {

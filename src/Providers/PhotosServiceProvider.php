@@ -2,10 +2,10 @@
 
 namespace Revolution\Google\Photos\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
-use Revolution\Google\Photos\Photos;
+use Illuminate\Support\ServiceProvider;
 use Revolution\Google\Photos\Contracts\Factory;
+use Revolution\Google\Photos\Photos;
 
 class PhotosServiceProvider extends ServiceProvider implements DeferrableProvider
 {

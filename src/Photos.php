@@ -2,13 +2,11 @@
 
 namespace Revolution\Google\Photos;
 
+use Google_Service_PhotosLibrary;
 use Illuminate\Container\Container;
 use Illuminate\Support\Traits\Macroable;
-
-use Revolution\Google\Photos\Contracts\Factory;
-
-use Google_Service_PhotosLibrary;
 use PulkitJalan\Google\Client;
+use Revolution\Google\Photos\Contracts\Factory;
 
 class Photos implements Factory
 {
@@ -16,7 +14,6 @@ class Photos implements Factory
     use Concerns\MediaItems;
     use Concerns\SharedAlbums;
     use Concerns\Uploads;
-
     use Macroable;
 
     /**
@@ -45,7 +42,7 @@ class Photos implements Factory
     }
 
     /**
-     * set access_token and set new service
+     * set access_token and set new service.
      *
      * @param  string|array  $token
      *
