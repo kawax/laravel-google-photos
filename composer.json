@@ -12,6 +12,7 @@
     "illuminate/container": "^6.0||^7.0||^8.0",
     "illuminate/support": "^6.0||^7.0||^8.0",
     "google/apiclient": "^2.9",
+    "google/apiclient-services": "v0.181.0",
     "guzzlehttp/guzzle": "^6.3||^7.0",
     "pulkitjalan/google-apiclient": "^4.1@dev"
   },
