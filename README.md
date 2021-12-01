@@ -7,6 +7,11 @@
 
 https://developers.google.com/photos/
 
+## Deprecated
+PhotosLibrary is no longer included in `google/apiclient-services`. This package has been deprecated.
+
+https://github.com/google/php-photoslibrary
+
 ## Requirements
 - PHP >= 7.3
 - Laravel >= 6.0
