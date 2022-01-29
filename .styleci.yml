@@ -1,3 +1,9 @@
 preset: laravel
 disabled:
   - unused_use
+
+version: 8.0
+
+finder:
+  exclude:
+    - "lib"
