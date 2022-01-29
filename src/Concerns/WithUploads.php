@@ -13,7 +13,6 @@ trait WithUploads
      * @param  string  $name
      * @param  string|StreamInterface  $file
      * @param  string  $endpoint
-     *
      * @return string
      */
     public function upload(

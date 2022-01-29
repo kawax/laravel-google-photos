@@ -15,7 +15,6 @@ trait WithMediaItems
      *
      * @param  array  $searchParams
      * @param  array  $optParams
-     *
      * @return object
      */
     public function search(array $searchParams = [], array $optParams = []): object
@@ -30,7 +29,6 @@ trait WithMediaItems
      *
      * @param  string  $mediaItemId
      * @param  array  $optParams
-     *
      * @return object
      */
     public function media(string $mediaItemId, array $optParams = []): object
@@ -44,7 +42,6 @@ trait WithMediaItems
      * @param  array  $uploadTokens
      * @param  string  $albumId
      * @param  array  $optParams
-     *
      * @return object
      */
     public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = []): object
@@ -73,7 +70,6 @@ trait WithMediaItems
 
     /**
      * @param  string  $uploadToken
-     *
      * @return NewMediaItem
      */
     protected function prepareCreate(string $uploadToken): NewMediaItem
