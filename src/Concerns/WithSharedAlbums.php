@@ -10,7 +10,6 @@ trait WithSharedAlbums
      * sharedAlbums.listSharedAlbums.
      *
      * @param  array  $optParams
-     *
      * @return object
      */
     public function listSharedAlbums(array $optParams = []): object

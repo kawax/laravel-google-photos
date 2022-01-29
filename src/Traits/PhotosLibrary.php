@@ -13,6 +13,7 @@ trait PhotosLibrary
 {
     /**
      * @return Factory
+     *
      * @throws BindingResolutionException
      */
     public function photos(): Factory
