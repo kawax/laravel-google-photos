@@ -28,9 +28,6 @@ This package depends on
 - https://github.com/google/google-api-php-client
 - https://github.com/pulkitjalan/google-apiclient
 
-Google_Service_PhotosLibrary  
-https://github.com/google/google-api-php-client-services/tree/master/src/Google/Service/PhotosLibrary
-
 ### Get API Credentials
 from https://developers.google.com/console  
 Enable `Photos Library API`.
@@ -45,7 +42,7 @@ php artisan vendor:publish --provider="PulkitJalan\Google\GoogleServiceProvider"
     'client_id'        => env('GOOGLE_CLIENT_ID', ''),
     'client_secret'    => env('GOOGLE_CLIENT_SECRET', ''),
     'redirect_uri'     => env('GOOGLE_REDIRECT', ''),
-    'scopes'           => [\Google_Service_PhotosLibrary::PHOTOSLIBRARY],
+    'scopes'           => [\Google\Service\PhotosLibrary::PHOTOSLIBRARY],
     'access_type'      => 'offline',
     'approval_prompt'  => 'force',
     'prompt'           => 'consent', //"none", "consent", "select_account" default:none

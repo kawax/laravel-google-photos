@@ -28,7 +28,7 @@ class User extends Authenticatable
      *
      * @return string|array
      */
-    protected function photosAccessToken()
+    protected function photosAccessToken(): array|string
     {
         return [
             'access_token'  => $this->access_token,
