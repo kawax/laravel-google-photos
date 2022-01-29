@@ -2,7 +2,9 @@
 
 namespace Revolution\Google\Photos\Contracts;
 
-use Google_Service_PhotosLibrary;
+use Google\Service;
+use Google\Service\PhotosLibrary;
+use Psr\Http\Message\StreamInterface;
 
 interface Factory
 {
@@ -13,7 +15,7 @@ interface Factory
      *
      * @return object
      */
-    public function listAlbums(array $optParams = []);
+    public function listAlbums(array $optParams = []): object;
 
     /**
      * albums.create.
@@ -23,7 +25,7 @@ interface Factory
      *
      * @return object
      */
-    public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = []);
+    public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = []): object;
 
     /**
      * albums.get.
@@ -32,7 +34,7 @@ interface Factory
      *
      * @return object
      */
-    public function album(string $albumId);
+    public function album(string $albumId): object;
 
     /**
      * mediaItems.search.
@@ -42,7 +44,7 @@ interface Factory
      *
      * @return object
      */
-    public function search(array $searchParams = [], array $optParams = []);
+    public function search(array $searchParams = [], array $optParams = []): object;
 
     /**
      * mediaItems.get.
@@ -52,7 +54,7 @@ interface Factory
      *
      * @return object
      */
-    public function media(string $mediaItemId, array $optParams = []);
+    public function media(string $mediaItemId, array $optParams = []): object;
 
     /**
      * mediaItems.batchCreate.
@@ -63,28 +65,28 @@ interface Factory
      *
      * @return object
      */
-    public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = []);
+    public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = []): object;
 
     /**
-     * @param  Google_Service_PhotosLibrary|\Google_Service  $service
+     * @param  PhotosLibrary|Service  $service
      *
      * @return $this
      */
-    public function setService($service);
+    public function setService(PhotosLibrary|Service $service): self;
 
     /**
-     * @return Google_Service_PhotosLibrary
+     * @return PhotosLibrary
      */
-    public function getService(): Google_Service_PhotosLibrary;
+    public function getService(): PhotosLibrary;
 
     /**
      * set access_token and set new service.
      *
-     * @param  string|array  $token
+     * @param  array|string  $token
      *
      * @return $this
      */
-    public function setAccessToken($token);
+    public function setAccessToken(array|string $token): self;
 
     /**
      * sharedAlbums.listSharedAlbums.
@@ -93,20 +95,20 @@ interface Factory
      *
      * @return object
      */
-    public function listSharedAlbums(array $optParams = []);
+    public function listSharedAlbums(array $optParams = []): object;
 
     /**
      * Returns uploadToken.
      *
      * @param  string  $name
-     * @param  string|resource|\Psr\Http\Message\StreamInterface  $file
+     * @param  StreamInterface|string  $file
      * @param  string  $endpoint
      *
      * @return string
      */
     public function upload(
         string $name,
-        $file,
+        StreamInterface|string $file,
         string $endpoint = 'https://photoslibrary.googleapis.com/v1/uploads'
     ): string;
 }

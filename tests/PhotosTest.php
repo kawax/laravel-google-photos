@@ -62,10 +62,10 @@ class PhotosTest extends TestCase
     public function testGetAccessToken()
     {
         $photos = m::mock(\Revolution\Google\Photos\Photos::class)->makePartial();
-        $photos->shouldReceive('getService->getClient->getAccessToken')->andReturn('token');
+        $photos->shouldReceive('getService->getClient->getAccessToken')->andReturn(['token']);
 
         $token = $photos->getAccessToken();
 
-        $this->assertSame('token', $token);
+        $this->assertSame(['token'], $token);
     }
 }

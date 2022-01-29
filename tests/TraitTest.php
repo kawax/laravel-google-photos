@@ -27,7 +27,7 @@ class User
 {
     use PhotosLibrary;
 
-    public function photosAccessToken()
+    public function photosAccessToken(): array|string
     {
         return 'test';
     }

@@ -2,9 +2,9 @@
 
 namespace Revolution\Google\Photos\Concerns;
 
-use Google_Service_PhotosLibrary_Resource_SharedAlbums as Resource_SharedAlbums;
+use Google\Service\PhotosLibrary\Resource\SharedAlbums;
 
-trait SharedAlbums
+trait WithSharedAlbums
 {
     /**
      * sharedAlbums.listSharedAlbums.
@@ -13,15 +13,15 @@ trait SharedAlbums
      *
      * @return object
      */
-    public function listSharedAlbums(array $optParams = [])
+    public function listSharedAlbums(array $optParams = []): object
     {
         return $this->serviceSharedAlbums()->listSharedAlbums($optParams)->toSimpleObject();
     }
 
     /**
-     * @return Resource_SharedAlbums
+     * @return SharedAlbums
      */
-    protected function serviceSharedAlbums(): Resource_SharedAlbums
+    protected function serviceSharedAlbums(): SharedAlbums
     {
         return $this->getService()->sharedAlbums;
     }

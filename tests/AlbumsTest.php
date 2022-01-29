@@ -17,31 +17,31 @@ class AlbumsTest extends TestCase
     public function testListAlbums()
     {
         $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceAlbums->listAlbums->toSimpleObject')->andReturn('test');
+        $photos->shouldReceive('serviceAlbums->listAlbums->toSimpleObject')->andReturn((object)[]);
 
         $album = $photos->listAlbums([]);
 
-        $this->assertSame('test', $album);
+        $this->assertEquals((object)[], $album);
     }
 
     public function testCreateAlbum()
     {
         $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceAlbums->create->toSimpleObject')->andReturn('test');
+        $photos->shouldReceive('serviceAlbums->create->toSimpleObject')->andReturn((object)[]);
 
         $album = $photos->createAlbum();
 
-        $this->assertSame('test', $album);
+        $this->assertEquals((object)[], $album);
     }
 
     public function testGetAlbum()
     {
         $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceAlbums->get->toSimpleObject')->andReturn('test');
+        $photos->shouldReceive('serviceAlbums->get->toSimpleObject')->andReturn((object)[]);
 
         $album = $photos->album('test');
 
-        $this->assertSame('test', $album);
+        $this->assertEquals((object)[], $album);
     }
 
     public function testServiceAlbum()

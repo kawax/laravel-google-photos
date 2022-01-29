@@ -17,31 +17,31 @@ class MediaItemsTest extends TestCase
     public function testSearch()
     {
         $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceMediaItems->search->toSimpleObject')->andReturn('test');
+        $photos->shouldReceive('serviceMediaItems->search->toSimpleObject')->andReturn((object)[]);
 
         $item = $photos->search([]);
 
-        $this->assertSame('test', $item);
+        $this->assertEquals((object)[], $item);
     }
 
     public function testCreateMedia()
     {
         $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceMediaItems->batchCreate->toSimpleObject')->andReturn('test');
+        $photos->shouldReceive('serviceMediaItems->batchCreate->toSimpleObject')->andReturn((object)[]);
 
         $item = $photos->batchCreate(['token']);
 
-        $this->assertSame('test', $item);
+        $this->assertEquals((object)[], $item);
     }
 
     public function testGetMedia()
     {
         $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceMediaItems->get->toSimpleObject')->andReturn('test');
+        $photos->shouldReceive('serviceMediaItems->get->toSimpleObject')->andReturn((object)[]);
 
         $item = $photos->media('test');
 
-        $this->assertSame('test', $item);
+        $this->assertEquals((object)[], $item);
     }
 
     public function testServiceMedia()

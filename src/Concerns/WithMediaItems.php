@@ -2,13 +2,13 @@
 
 namespace Revolution\Google\Photos\Concerns;
 
-use Google_Service_PhotosLibrary_BatchCreateMediaItemsRequest as BatchCreateMediaItemsRequest;
-use Google_Service_PhotosLibrary_NewMediaItem as NewMediaItem;
-use Google_Service_PhotosLibrary_Resource_MediaItems as Resource_MediaItems;
-use Google_Service_PhotosLibrary_SearchMediaItemsRequest as SearchMediaItemsRequest;
-use Google_Service_PhotosLibrary_SimpleMediaItem as SimpleMediaItem;
+use Google\Service\PhotosLibrary\BatchCreateMediaItemsRequest;
+use Google\Service\PhotosLibrary\NewMediaItem;
+use Google\Service\PhotosLibrary\Resource\MediaItems;
+use Google\Service\PhotosLibrary\SearchMediaItemsRequest;
+use Google\Service\PhotosLibrary\SimpleMediaItem;
 
-trait MediaItems
+trait WithMediaItems
 {
     /**
      * mediaItems.search.
@@ -18,7 +18,7 @@ trait MediaItems
      *
      * @return object
      */
-    public function search(array $searchParams = [], array $optParams = [])
+    public function search(array $searchParams = [], array $optParams = []): object
     {
         $search = new SearchMediaItemsRequest($searchParams);
 
@@ -33,7 +33,7 @@ trait MediaItems
      *
      * @return object
      */
-    public function media(string $mediaItemId, array $optParams = [])
+    public function media(string $mediaItemId, array $optParams = []): object
     {
         return $this->serviceMediaItems()->get($mediaItemId, $optParams)->toSimpleObject();
     }
@@ -47,7 +47,7 @@ trait MediaItems
      *
      * @return object
      */
-    public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = [])
+    public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = []): object
     {
         $newMediaItems = [];
 
@@ -57,16 +57,16 @@ trait MediaItems
 
         $request = new BatchCreateMediaItemsRequest([
             'newMediaItems' => $newMediaItems,
-            'albumId'       => $albumId,
+            'albumId' => $albumId,
         ]);
 
         return $this->serviceMediaItems()->batchCreate($request, $optParams)->toSimpleObject();
     }
 
     /**
-     * @return Resource_MediaItems
+     * @return MediaItems
      */
-    protected function serviceMediaItems(): Resource_MediaItems
+    protected function serviceMediaItems(): MediaItems
     {
         return $this->getService()->mediaItems;
     }

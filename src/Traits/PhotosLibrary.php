@@ -3,6 +3,7 @@
 namespace Revolution\Google\Photos\Traits;
 
 use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Revolution\Google\Photos\Contracts\Factory;
 
 /**
@@ -12,9 +13,9 @@ trait PhotosLibrary
 {
     /**
      * @return Factory
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws BindingResolutionException
      */
-    public function photos()
+    public function photos(): Factory
     {
         $token = $this->photosAccessToken();
 
@@ -26,5 +27,5 @@ trait PhotosLibrary
      *
      * @return string|array
      */
-    abstract protected function photosAccessToken();
+    abstract protected function photosAccessToken(): array|string;
 }

@@ -5,20 +5,20 @@ namespace Revolution\Google\Photos\Concerns;
 use GuzzleHttp\Client;
 use Psr\Http\Message\StreamInterface;
 
-trait Uploads
+trait WithUploads
 {
     /**
      * Returns uploadToken.
      *
      * @param  string  $name
-     * @param  string|resource|StreamInterface  $file
+     * @param  string|StreamInterface  $file
      * @param  string  $endpoint
      *
      * @return string
      */
     public function upload(
         string $name,
-        $file,
+        StreamInterface|string $file,
         string $endpoint = 'https://photoslibrary.googleapis.com/v1/uploads'
     ): string {
         /**

@@ -10,14 +10,6 @@ use Revolution\Google\Photos\Photos;
 class PhotosServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
-     * Boot the service provider.
-     */
-    public function boot()
-    {
-        //
-    }
-
-    /**
      * Register the service provider.
      *
      * @return void

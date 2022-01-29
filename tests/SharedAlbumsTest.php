@@ -17,7 +17,7 @@ class SharedAlbumsTest extends TestCase
     public function testShared()
     {
         $shared = m::mock(SharedAlbums::class);
-        $shared->shouldReceive('listSharedAlbums->toSimpleObject')->once()->andReturn('test');
+        $shared->shouldReceive('listSharedAlbums->toSimpleObject')->once()->andReturn((object)[]);
 
         $service = m::mock(Google_Service_PhotosLibrary::class);
         $service->sharedAlbums = $shared;
@@ -26,6 +26,6 @@ class SharedAlbumsTest extends TestCase
 
         $album = $photos->setService($service)->listSharedAlbums([]);
 
-        $this->assertSame('test', $album);
+        $this->assertEquals((object)[], $album);
     }
 }

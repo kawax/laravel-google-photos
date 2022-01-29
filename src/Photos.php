@@ -2,7 +2,8 @@
 
 namespace Revolution\Google\Photos;
 
-use Google_Service_PhotosLibrary;
+use Google\Service;
+use Google\Service\PhotosLibrary;
 use Illuminate\Container\Container;
 use Illuminate\Support\Traits\Macroable;
 use PulkitJalan\Google\Client;
@@ -10,23 +11,23 @@ use Revolution\Google\Photos\Contracts\Factory;
 
 class Photos implements Factory
 {
-    use Concerns\Albums;
-    use Concerns\MediaItems;
-    use Concerns\SharedAlbums;
-    use Concerns\Uploads;
+    use Concerns\WithAlbums;
+    use Concerns\WithMediaItems;
+    use Concerns\WithSharedAlbums;
+    use Concerns\WithUploads;
     use Macroable;
 
     /**
-     * @var Google_Service_PhotosLibrary
+     * @var PhotosLibrary
      */
-    protected $service;
+    protected PhotosLibrary $service;
 
     /**
-     * @param  Google_Service_PhotosLibrary|\Google_Service  $service
+     * @param  PhotosLibrary|Service  $service
      *
      * @return $this
      */
-    public function setService($service)
+    public function setService(PhotosLibrary|Service $service): self
     {
         $this->service = $service;
 
@@ -34,9 +35,9 @@ class Photos implements Factory
     }
 
     /**
-     * @return Google_Service_PhotosLibrary
+     * @return PhotosLibrary
      */
-    public function getService(): Google_Service_PhotosLibrary
+    public function getService(): PhotosLibrary
     {
         return $this->service;
     }
@@ -44,12 +45,12 @@ class Photos implements Factory
     /**
      * set access_token and set new service.
      *
-     * @param  string|array  $token
+     * @param  array|string  $token
      *
      * @return $this
      * @throws \Exception
      */
-    public function setAccessToken($token)
+    public function setAccessToken(array|string $token): self
     {
         /**
          * @var Client $google
@@ -70,7 +71,7 @@ class Photos implements Factory
     /**
      * @return array
      */
-    public function getAccessToken()
+    public function getAccessToken(): array
     {
         return $this->getService()->getClient()->getAccessToken();
     }
