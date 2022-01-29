@@ -24,7 +24,6 @@ class Photos implements Factory
 
     /**
      * @param  PhotosLibrary|Service  $service
-     *
      * @return $this
      */
     public function setService(PhotosLibrary|Service $service): self
@@ -46,8 +45,8 @@ class Photos implements Factory
      * set access_token and set new service.
      *
      * @param  array|string  $token
-     *
      * @return $this
+     *
      * @throws \Exception
      */
     public function setAccessToken(array|string $token): self

@@ -12,7 +12,6 @@ trait WithAlbums
      * albums.listAlbums.
      *
      * @param  array  $optParams
-     *
      * @return object
      */
     public function listAlbums(array $optParams = []): object
@@ -25,7 +24,6 @@ trait WithAlbums
      *
      * @param  array  $createParams
      * @param  array  $optParams
-     *
      * @return object
      */
     public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = []): object
@@ -41,7 +39,6 @@ trait WithAlbums
      * albums.get.
      *
      * @param  string  $albumId
-     *
      * @return object
      */
     public function album(string $albumId): object

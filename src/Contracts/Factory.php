@@ -12,7 +12,6 @@ interface Factory
      * albums.listAlbums.
      *
      * @param  array  $optParams
-     *
      * @return object
      */
     public function listAlbums(array $optParams = []): object;
@@ -22,7 +21,6 @@ interface Factory
      *
      * @param  array  $createParams
      * @param  array  $optParams
-     *
      * @return object
      */
     public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = []): object;
@@ -31,7 +29,6 @@ interface Factory
      * albums.get.
      *
      * @param  string  $albumId
-     *
      * @return object
      */
     public function album(string $albumId): object;
@@ -41,7 +38,6 @@ interface Factory
      *
      * @param  array  $searchParams
      * @param  array  $optParams
-     *
      * @return object
      */
     public function search(array $searchParams = [], array $optParams = []): object;
@@ -51,7 +47,6 @@ interface Factory
      *
      * @param  string  $mediaItemId
      * @param  array  $optParams
-     *
      * @return object
      */
     public function media(string $mediaItemId, array $optParams = []): object;
@@ -62,14 +57,12 @@ interface Factory
      * @param  array  $uploadTokens
      * @param  string  $albumId
      * @param  array  $optParams
-     *
      * @return object
      */
     public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = []): object;
 
     /**
      * @param  PhotosLibrary|Service  $service
-     *
      * @return $this
      */
     public function setService(PhotosLibrary|Service $service): self;
@@ -83,7 +76,6 @@ interface Factory
      * set access_token and set new service.
      *
      * @param  array|string  $token
-     *
      * @return $this
      */
     public function setAccessToken(array|string $token): self;
@@ -92,7 +84,6 @@ interface Factory
      * sharedAlbums.listSharedAlbums.
      *
      * @param  array  $optParams
-     *
      * @return object
      */
     public function listSharedAlbums(array $optParams = []): object;
@@ -103,7 +94,6 @@ interface Factory
      * @param  string  $name
      * @param  StreamInterface|string  $file
      * @param  string  $endpoint
-     *
      * @return string
      */
     public function upload(
