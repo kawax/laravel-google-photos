@@ -13,7 +13,7 @@
     "illuminate/support": "^8.0||^9.0",
     "google/apiclient": "^2.12",
     "guzzlehttp/guzzle": "^7.4",
-    "pulkitjalan/google-apiclient": "^5.0"
+    "pulkitjalan/google-apiclient": "^6.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5",
