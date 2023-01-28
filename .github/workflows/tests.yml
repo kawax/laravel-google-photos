@@ -11,11 +11,11 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.0, 8.1]
+        php: [8.0, 8.1, 8.2]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
         with:
@@ -25,7 +25,7 @@ jobs:
       - name: Install Composer dependencies
         run: composer update --no-progress --optimize-autoloader
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v3.0.0
+        uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
