@@ -8,10 +8,6 @@ jobs:
   test:
     name: tests
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [8.1, 8.2, 8.3]
 
     steps:
       - name: Checkout
@@ -19,13 +15,13 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 8.3
           extensions: mbstring
           coverage: xdebug
       - name: Install Composer dependencies
         run: composer update --no-progress --optimize-autoloader
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v5.0.0
+        uses: paambaati/codeclimate-action@v5
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
