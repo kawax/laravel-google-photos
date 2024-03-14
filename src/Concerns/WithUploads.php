@@ -27,10 +27,10 @@ trait WithUploads
 
         $response = $client->post($endpoint, [
             'headers' => [
-                'Content-type'            => 'application/octet-stream',
+                'Content-type' => 'application/octet-stream',
                 'X-Goog-Upload-File-Name' => $name,
             ],
-            'body'    => $file,
+            'body' => $file,
         ]);
 
         return $response->getBody();
