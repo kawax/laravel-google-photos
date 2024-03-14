@@ -52,7 +52,7 @@ class PhotosTest extends TestCase
         $this->google->shouldReceive('make')->once()->andReturns(m::mock(\Google_Service_PhotosLibrary::class));
 
         $photos = Photos::setAccessToken([
-            'access_token'  => 'test',
+            'access_token' => 'test',
             'refresh_token' => 'test',
         ]);
 
