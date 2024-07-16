@@ -10,6 +10,7 @@ trait WithUploads
 {
     /**
      * Returns uploadToken.
+     *
      * @throws GuzzleException
      */
     public function upload(
