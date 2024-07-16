@@ -1,11 +1,11 @@
 <?php
 
-namespace Revolution\Google\Photos\Tests;
+namespace Tests;
 
-use Google_Service_PhotosLibrary;
-use Google_Service_PhotosLibrary_Resource_Albums as Albums;
+use Google\Service\PhotosLibrary;
+use Google\Service\PhotosLibrary\Resource\Albums;
 use Mockery as m;
-use Revolution\Google\Photos\Photos;
+use Revolution\Google\Photos\PhotosClient;
 
 class AlbumsTest extends TestCase
 {
@@ -18,7 +18,7 @@ class AlbumsTest extends TestCase
 
     public function testListAlbums()
     {
-        $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $photos->shouldReceive('serviceAlbums->listAlbums->toSimpleObject')->andReturn((object) []);
 
         $album = $photos->listAlbums([]);
@@ -28,7 +28,7 @@ class AlbumsTest extends TestCase
 
     public function testCreateAlbum()
     {
-        $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $photos->shouldReceive('serviceAlbums->create->toSimpleObject')->andReturn((object) []);
 
         $album = $photos->createAlbum();
@@ -38,7 +38,7 @@ class AlbumsTest extends TestCase
 
     public function testGetAlbum()
     {
-        $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $photos->shouldReceive('serviceAlbums->get->toSimpleObject')->andReturn((object) []);
 
         $album = $photos->album('test');
@@ -48,10 +48,10 @@ class AlbumsTest extends TestCase
 
     public function testServiceAlbum()
     {
-        $service = m::mock(Google_Service_PhotosLibrary::class);
+        $service = m::mock(PhotosLibrary::class);
         $service->albums = m::mock(Albums::class);
 
-        $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
 
         $album = $photos->setService($service)->serviceAlbums();
 

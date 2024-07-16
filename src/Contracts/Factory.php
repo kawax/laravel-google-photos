@@ -10,95 +10,54 @@ interface Factory
 {
     /**
      * albums.listAlbums.
-     *
-     * @param  array  $optParams
-     * @return object
      */
     public function listAlbums(array $optParams = []): object;
 
     /**
      * albums.create.
-     *
-     * @param  array  $createParams
-     * @param  array  $optParams
-     * @return object
      */
     public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = []): object;
 
     /**
      * albums.get.
-     *
-     * @param  string  $albumId
-     * @return object
      */
     public function album(string $albumId): object;
 
     /**
      * mediaItems.search.
-     *
-     * @param  array  $searchParams
-     * @param  array  $optParams
-     * @return object
      */
     public function search(array $searchParams = [], array $optParams = []): object;
 
     /**
      * mediaItems.get.
-     *
-     * @param  string  $mediaItemId
-     * @param  array  $optParams
-     * @return object
      */
     public function media(string $mediaItemId, array $optParams = []): object;
 
     /**
      * mediaItems.batchCreate.
-     *
-     * @param  array  $uploadTokens
-     * @param  string  $albumId
-     * @param  array  $optParams
-     * @return object
      */
     public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = []): object;
 
-    /**
-     * @param  PhotosLibrary|Service  $service
-     * @return $this
-     */
-    public function setService(PhotosLibrary|Service $service): self;
+    public function setService(PhotosLibrary|Service $service): static;
 
-    /**
-     * @return PhotosLibrary
-     */
     public function getService(): PhotosLibrary;
 
     /**
      * set access_token and set new service.
-     *
-     * @param  array|string  $token
-     * @return $this
      */
-    public function setAccessToken(array|string $token): self;
+    public function setAccessToken(array|string $token): static;
 
     /**
      * sharedAlbums.listSharedAlbums.
-     *
-     * @param  array  $optParams
-     * @return object
      */
     public function listSharedAlbums(array $optParams = []): object;
 
     /**
      * Returns uploadToken.
-     *
-     * @param  string  $name
-     * @param  StreamInterface|string  $file
-     * @param  string  $endpoint
-     * @return string
      */
     public function upload(
         string $name,
         StreamInterface|string $file,
-        string $endpoint = 'https://photoslibrary.googleapis.com/v1/uploads'
+        string $endpoint = 'https://photoslibrary.googleapis.com/v1/uploads',
     ): string;
 }

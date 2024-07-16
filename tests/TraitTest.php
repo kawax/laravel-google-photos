@@ -1,6 +1,6 @@
 <?php
 
-namespace Revolution\Google\Photos\Tests;
+namespace Tests;
 
 use Mockery as m;
 use Revolution\Google\Photos\Facades\Photos;

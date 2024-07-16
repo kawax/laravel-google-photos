@@ -1,9 +1,9 @@
 <?php
 
-namespace Revolution\Google\Photos\Tests;
+namespace Tests;
 
-use PulkitJalan\Google\Facades\Google;
-use PulkitJalan\Google\GoogleServiceProvider;
+use Revolution\Google\Client\Facades\Google;
+use Revolution\Google\Client\Providers\GoogleServiceProvider;
 use Revolution\Google\Photos\Facades\Photos;
 use Revolution\Google\Photos\Providers\PhotosServiceProvider;
 

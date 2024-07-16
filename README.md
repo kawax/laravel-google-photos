@@ -8,8 +8,8 @@
 https://developers.google.com/photos/
 
 ## Requirements
-- PHP >= 8.1
-- Laravel >= 10.0
+- PHP >= 8.2
+- Laravel >= 11.0
 
 ## Versioning
 - Basic : semver
@@ -22,20 +22,9 @@ https://developers.google.com/photos/
 composer require revolution/laravel-google-photos
 ```
 
-This package depends on
-
-- Socialite
-- https://github.com/google/google-api-php-client
-- https://github.com/pulkitjalan/google-apiclient
-
 ### Get API Credentials
 from https://developers.google.com/console  
 Enable `Photos Library API`.
-
-### publish config file
-```
-php artisan vendor:publish --provider="PulkitJalan\Google\GoogleServiceProvider" --tag="config"
-```
 
 ### config/google.php
 ```php
@@ -69,17 +58,5 @@ GOOGLE_CLIENT_SECRET=
 GOOGLE_REDIRECT=
 ```
 
-## Demo
-https://github.com/kawax/laravel-google-photos-project
-
-## Usage
-See demo project and docs.
-
-Or another Google API Series.
-- https://github.com/kawax/laravel-google-sheets
-- https://github.com/kawax/laravel-google-searchconsole
-
-
 ## LICENSE
 MIT  
-Copyright kawax

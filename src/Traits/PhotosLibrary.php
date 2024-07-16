@@ -12,8 +12,6 @@ use Revolution\Google\Photos\Contracts\Factory;
 trait PhotosLibrary
 {
     /**
-     * @return Factory
-     *
      * @throws BindingResolutionException
      */
     public function photos(): Factory
@@ -25,8 +23,6 @@ trait PhotosLibrary
 
     /**
      * Get the Access Token.
-     *
-     * @return string|array
      */
     abstract protected function photosAccessToken(): array|string;
 }

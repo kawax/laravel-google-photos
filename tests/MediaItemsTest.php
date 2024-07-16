@@ -1,11 +1,11 @@
 <?php
 
-namespace Revolution\Google\Photos\Tests;
+namespace Tests;
 
-use Google_Service_PhotosLibrary;
-use Google_Service_PhotosLibrary_Resource_MediaItems as MediaItems;
+use Google\Service\PhotosLibrary;
+use Google\Service\PhotosLibrary\Resource\MediaItems;
 use Mockery as m;
-use Revolution\Google\Photos\Photos;
+use Revolution\Google\Photos\PhotosClient;
 
 class MediaItemsTest extends TestCase
 {
@@ -18,7 +18,7 @@ class MediaItemsTest extends TestCase
 
     public function testSearch()
     {
-        $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $photos->shouldReceive('serviceMediaItems->search->toSimpleObject')->andReturn((object) []);
 
         $item = $photos->search([]);
@@ -28,7 +28,7 @@ class MediaItemsTest extends TestCase
 
     public function testCreateMedia()
     {
-        $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $photos->shouldReceive('serviceMediaItems->batchCreate->toSimpleObject')->andReturn((object) []);
 
         $item = $photos->batchCreate(['token']);
@@ -38,7 +38,7 @@ class MediaItemsTest extends TestCase
 
     public function testGetMedia()
     {
-        $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $photos->shouldReceive('serviceMediaItems->get->toSimpleObject')->andReturn((object) []);
 
         $item = $photos->media('test');
@@ -48,10 +48,10 @@ class MediaItemsTest extends TestCase
 
     public function testServiceMedia()
     {
-        $service = m::mock(Google_Service_PhotosLibrary::class);
+        $service = m::mock(PhotosLibrary::class);
         $service->mediaItems = m::mock(MediaItems::class);
 
-        $photos = m::mock(Photos::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
 
         $item = $photos->setService($service)->serviceMediaItems();
 

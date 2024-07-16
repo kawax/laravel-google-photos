@@ -12,10 +12,6 @@ trait WithMediaItems
 {
     /**
      * mediaItems.search.
-     *
-     * @param  array  $searchParams
-     * @param  array  $optParams
-     * @return object
      */
     public function search(array $searchParams = [], array $optParams = []): object
     {
@@ -26,10 +22,6 @@ trait WithMediaItems
 
     /**
      * mediaItems.get.
-     *
-     * @param  string  $mediaItemId
-     * @param  array  $optParams
-     * @return object
      */
     public function media(string $mediaItemId, array $optParams = []): object
     {
@@ -38,11 +30,6 @@ trait WithMediaItems
 
     /**
      * mediaItems.batchCreate.
-     *
-     * @param  array  $uploadTokens
-     * @param  string  $albumId
-     * @param  array  $optParams
-     * @return object
      */
     public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = []): object
     {
@@ -60,18 +47,11 @@ trait WithMediaItems
         return $this->serviceMediaItems()->batchCreate($request, $optParams)->toSimpleObject();
     }
 
-    /**
-     * @return MediaItems
-     */
     protected function serviceMediaItems(): MediaItems
     {
         return $this->getService()->mediaItems;
     }
 
-    /**
-     * @param  string  $uploadToken
-     * @return NewMediaItem
-     */
     protected function prepareCreate(string $uploadToken): NewMediaItem
     {
         $simple = new SimpleMediaItem([

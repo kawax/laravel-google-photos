@@ -1,11 +1,11 @@
 <?php
 
-namespace Revolution\Google\Photos\Tests;
+namespace Tests;
 
-use Google_Service_PhotosLibrary;
-use Google_Service_PhotosLibrary_Resource_SharedAlbums as SharedAlbums;
+use Google\Service\PhotosLibrary;
+use Google\Service\PhotosLibrary\Resource\SharedAlbums;
 use Mockery as m;
-use Revolution\Google\Photos\Photos;
+use Revolution\Google\Photos\PhotosClient;
 
 class SharedAlbumsTest extends TestCase
 {
@@ -21,10 +21,10 @@ class SharedAlbumsTest extends TestCase
         $shared = m::mock(SharedAlbums::class);
         $shared->shouldReceive('listSharedAlbums->toSimpleObject')->once()->andReturn((object) []);
 
-        $service = m::mock(Google_Service_PhotosLibrary::class);
+        $service = m::mock(PhotosLibrary::class);
         $service->sharedAlbums = $shared;
 
-        $photos = m::mock(Photos::class)->makePartial();
+        $photos = m::mock(PhotosClient::class)->makePartial();
 
         $album = $photos->setService($service)->listSharedAlbums([]);
 

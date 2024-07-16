@@ -1,17 +1,19 @@
 <?php
 
-namespace Revolution\Google\Photos\Tests;
+namespace Tests;
 
+use Google\Service\PhotosLibrary;
 use Mockery as m;
-use PulkitJalan\Google\Client;
+use Revolution\Google\Client\GoogleSheetClient as Client;
 use Revolution\Google\Photos\Facades\Photos;
+use Revolution\Google\Photos\PhotosClient;
 
 class PhotosTest extends TestCase
 {
     /**
      * @var Client
      */
-    protected $google;
+    protected mixed $google;
 
     protected function setUp(): void
     {
@@ -30,18 +32,18 @@ class PhotosTest extends TestCase
 
     public function testInstance()
     {
-        $photos = new \Revolution\Google\Photos\Photos();
+        $photos = new PhotosClient();
 
-        $this->assertInstanceOf(\Revolution\Google\Photos\Photos::class, $photos);
+        $this->assertInstanceOf(PhotosClient::class, $photos);
     }
 
     public function testService()
     {
-        $this->google->shouldReceive('make')->once()->andReturns(m::mock(\Google_Service_PhotosLibrary::class));
+        $this->google->shouldReceive('make')->once()->andReturns(m::mock(PhotosLibrary::class));
 
         Photos::setService($this->google->make('PhotosLibrary'));
 
-        $this->assertInstanceOf(\Google_Service_PhotosLibrary::class, Photos::getService());
+        $this->assertInstanceOf(PhotosLibrary::class, Photos::getService());
     }
 
     public function testSetAccessToken()
@@ -51,19 +53,19 @@ class PhotosTest extends TestCase
         $this->google->shouldReceive('setAccessToken')->once();
         $this->google->shouldReceive('isAccessTokenExpired')->once()->andReturns(true);
         $this->google->shouldReceive('fetchAccessTokenWithRefreshToken')->once();
-        $this->google->shouldReceive('make')->once()->andReturns(m::mock(\Google_Service_PhotosLibrary::class));
+        $this->google->shouldReceive('make')->once()->andReturns(m::mock(PhotosLibrary::class));
 
         $photos = Photos::setAccessToken([
             'access_token' => 'test',
             'refresh_token' => 'test',
         ]);
 
-        $this->assertInstanceOf(\Google_Service_PhotosLibrary::class, $photos->getService());
+        $this->assertInstanceOf(PhotosLibrary::class, $photos->getService());
     }
 
     public function testGetAccessToken()
     {
-        $photos = m::mock(\Revolution\Google\Photos\Photos::class)->makePartial();
+        $photos = m::mock(PhotosClient::class)->makePartial();
         $photos->shouldReceive('getService->getClient->getAccessToken')->andReturn(['token']);
 
         $token = $photos->getAccessToken();

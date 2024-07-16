@@ -1,5 +1,4 @@
 # PhotosLibrary Trait
-Like a Laravel Notifications.
 
 Add `PhotosLibrary` trait to User model.
 

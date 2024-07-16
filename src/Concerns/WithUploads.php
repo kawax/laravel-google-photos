@@ -3,22 +3,19 @@
 namespace Revolution\Google\Photos\Concerns;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\StreamInterface;
 
 trait WithUploads
 {
     /**
      * Returns uploadToken.
-     *
-     * @param  string  $name
-     * @param  string|StreamInterface  $file
-     * @param  string  $endpoint
-     * @return string
+     * @throws GuzzleException
      */
     public function upload(
         string $name,
         StreamInterface|string $file,
-        string $endpoint = 'https://photoslibrary.googleapis.com/v1/uploads'
+        string $endpoint = 'https://photoslibrary.googleapis.com/v1/uploads',
     ): string {
         /**
          * @var Client $client
