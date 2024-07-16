@@ -4,23 +4,20 @@ namespace Tests;
 
 use Google\Service\PhotosLibrary;
 use Mockery as m;
-use Revolution\Google\Client\GoogleSheetClient as Client;
+use Revolution\Google\Client\GoogleApiClient;
 use Revolution\Google\Photos\Facades\Photos;
 use Revolution\Google\Photos\PhotosClient;
 
 class PhotosTest extends TestCase
 {
-    /**
-     * @var Client
-     */
-    protected mixed $google;
+    protected GoogleApiClient $google;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->google = m::mock(Client::class);
-        app()->instance(Client::class, $this->google);
+        $this->google = m::mock(GoogleApiClient::class);
+        app()->instance(GoogleApiClient::class, $this->google);
     }
 
     public function tearDown(): void
