@@ -14,7 +14,7 @@ class PhotosServiceProvider extends ServiceProvider implements DeferrableProvide
      */
     public function register(): void
     {
-        $this->app->singleton(Factory::class, PhotosClient::class);
+        $this->app->scoped(Factory::class, PhotosClient::class);
     }
 
     /**
