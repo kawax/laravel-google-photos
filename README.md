@@ -29,6 +29,7 @@ Enable `Photos Library API`.
 ```php
     'scopes'           => [
         'https://www.googleapis.com/auth/photoslibrary.appendonly',
+        'https://www.googleapis.com/auth/photoslibrary.readonly.appcreateddata',
         'https://www.googleapis.com/auth/photoslibrary.edit.appcreateddata',
     ],
     'access_type'      => 'offline',

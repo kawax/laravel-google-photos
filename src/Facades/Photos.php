@@ -12,12 +12,13 @@ use Revolution\Google\Photos\Contracts\Factory;
 use Revolution\Google\Photos\PhotosClient;
 
 /**
+ * @method static PagedListResponse listMediaItems(array $optionalArgs = [])
  * @method static PagedListResponse search(array $optionalArgs = [])
- * @method static MediaItem media(string $mediaItemId, array $optionalArgs = [])
+ * @method static MediaItem getMediaItem(string $mediaItemId, array $optionalArgs = [])
  * @method static BatchCreateMediaItemsResponse batchCreate(array $uploadTokens, array $optionalArgs = [])
  * @method static PagedListResponse listAlbums(array $optionalArgs = [])
  * @method static Album createAlbum(array $data = [], array $optionalArgs = [])
- * @method static Album album(string $albumId, array $optionalArgs = [])
+ * @method static Album getAlbum(string $albumId, array $optionalArgs = [])
  * @method static Factory upload(string $rawFile, string $fileName = '', string $mimeType = '')
  * @method static Factory withToken(string|array $token)
  * @method static string getToken()

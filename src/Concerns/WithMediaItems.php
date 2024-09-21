@@ -15,6 +15,18 @@ use Google\Service\PhotosLibrary\Filters;
 trait WithMediaItems
 {
     /**
+     * List all media items from a user's Google Photos library.
+     *
+     * @param  array{pageSize?: integer, pageToken?: string, retrySettings?: RetrySettings|array}  $optionalArgs
+     *
+     * @throws ApiException
+     */
+    public function listMediaItems(array $optionalArgs = []): PagedListResponse
+    {
+        return $this->getService()->listMediaItems($optionalArgs);
+    }
+
+    /**
      * mediaItems.search.
      *
      * @param  array{albumId?: string, pageSize?: integer, pageToken?: string, filters?: Filters, orderBy?: string, retrySettings?: RetrySettings|array}  $optionalArgs
@@ -33,7 +45,7 @@ trait WithMediaItems
      *
      * @throws ApiException
      */
-    public function media(string $mediaItemId, array $optionalArgs = []): MediaItem
+    public function getMediaItem(string $mediaItemId, array $optionalArgs = []): MediaItem
     {
         return $this->getService()->getMediaItem($mediaItemId, $optionalArgs);
     }

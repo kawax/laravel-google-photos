@@ -18,6 +18,20 @@ class MediaItemsTest extends TestCase
         parent::tearDown();
     }
 
+    public function testListMediaItems()
+    {
+        $res = m::mock(PagedListResponse::class);
+
+        $client = m::mock(PhotosLibraryClient::class);
+        $client->shouldReceive('listMediaItems')->once()->andReturn($res);
+
+        $photos = new PhotosClient();
+
+        $items = $photos->setService($client)->listMediaItems();
+
+        $this->assertSame($res, $items);
+    }
+
     public function testSearch()
     {
         $res = m::mock(PagedListResponse::class);
@@ -55,7 +69,7 @@ class MediaItemsTest extends TestCase
 
         $photos = new PhotosClient();
 
-        $items = $photos->setService($client)->media('id');
+        $items = $photos->setService($client)->getMediaItem('id');
 
         $this->assertSame($res, $items);
     }

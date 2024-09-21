@@ -56,7 +56,7 @@ class AlbumsTest extends TestCase
 
         $photos = new PhotosClient();
 
-        $album = $photos->setService($client)->album('1');
+        $album = $photos->setService($client)->getAlbum('1');
 
         $this->assertSame('title', $album->getTitle());
     }

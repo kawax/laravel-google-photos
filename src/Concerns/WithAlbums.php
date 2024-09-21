@@ -43,7 +43,7 @@ trait WithAlbums
      *
      * @throws ApiException
      */
-    public function album(string $albumId, array $optionalArgs = []): Album
+    public function getAlbum(string $albumId, array $optionalArgs = []): Album
     {
         return $this->getService()->getAlbum($albumId, $optionalArgs);
     }

@@ -56,7 +56,16 @@ interface Factory
      *
      * @throws ApiException
      */
-    public function album(string $albumId, array $optionalArgs = []): Album;
+    public function getAlbum(string $albumId, array $optionalArgs = []): Album;
+
+    /**
+     * List all media items from a user's Google Photos library.
+     *
+     * @param  array{pageSize?: integer, pageToken?: string, retrySettings?: RetrySettings|array}  $optionalArgs
+     *
+     * @throws ApiException
+     */
+    public function listMediaItems(array $optionalArgs = []): PagedListResponse;
 
     /**
      * mediaItems.search.
@@ -74,7 +83,7 @@ interface Factory
      *
      * @throws ApiException
      */
-    public function media(string $mediaItemId, array $optionalArgs = []): MediaItem;
+    public function getMediaItem(string $mediaItemId, array $optionalArgs = []): MediaItem;
 
     /**
      * mediaItems.batchCreate.
