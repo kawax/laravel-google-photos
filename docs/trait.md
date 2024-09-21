@@ -3,43 +3,28 @@
 Add `PhotosLibrary` trait to User model.
 
 ```php
-<?php
-
-namespace App;
-
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
 use Revolution\Google\Photos\Traits\PhotosLibrary;
 
 class User extends Authenticatable
 {
-    use Notifiable;
     use PhotosLibrary;
 
-    protected $dates = [
-        'created_at',
-        'updated_at',
-    ];
-
-    /**
-     * Get the Access Token
-     *
-     * @return string|array
-     */
-    protected function photosAccessToken(): array|string
+    protected function tokenForPhotoLibrary(): array|string
     {
+        // Returns the refresh_token string
+        return $this->refresh_token;
+
+        // Or if you want to use a different id and secret, return an array containing the client id and secret
         return [
-            'access_token'  => $this->access_token,
-            'refresh_token' => $this->refresh_token,
-            'expires_in'    => $this->expires_in,
-            'created'       => $this->updated_at->getTimestamp(),
+               'client_id' => $this->client_id,
+               'client_secret' => $this->client_secret,
+               'refresh_token' => $this->refresh_token,
         ];
     }
 }
 ```
 
-Add `photosAccessToken()`(abstract) for access_token.
+Add `tokenForPhotoLibrary()`(abstract) for token.
 
 Trait has `photos()` that returns `Photos` instance.
 
@@ -47,19 +32,13 @@ Trait has `photos()` that returns `Photos` instance.
     public function __invoke(Request $request)
     {
         // Facade
-        //        $token = $request->user()->access_token;
-        //
-        //        Google::setAccessToken($token);
-        //
-        //        $albums = Photos::setService(Google::make('PhotosLibrary'))
+        //        $albums = Photos::withToken($request->user()->refresh_token)
         //                        ->listAlbums();
 
         // PhotosLibrary Trait
         $albums = $request->user()
                           ->photos()
                           ->listAlbums();
-
-        $albums = $albums->albums ?? [];
 
         return view('albums.index')->with(compact('albums'));
     }

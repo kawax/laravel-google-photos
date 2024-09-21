@@ -10,7 +10,8 @@
   "require": {
     "php": "^8.2",
     "illuminate/support": "^11.0",
-    "revolution/laravel-google-sheets": "^7.0"
+    "revolution/laravel-google-sheets": "^7.0",
+    "google/photos-library": "^1.7"
   },
   "require-dev": {
     "orchestra/testbench": "^9.0"
@@ -43,8 +44,6 @@
         "Revolution\\Google\\Photos\\Providers\\PhotosServiceProvider"
       ]
     },
-    "google/apiclient-services": [
-      "Drive"
-    ]
+    "google/apiclient-services": ["Drive"]
   }
 }

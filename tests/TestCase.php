@@ -2,9 +2,6 @@
 
 namespace Tests;
 
-use Revolution\Google\Client\Facades\Google;
-use Revolution\Google\Client\Providers\GoogleServiceProvider;
-use Revolution\Google\Photos\Facades\Photos;
 use Revolution\Google\Photos\Providers\PhotosServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -13,16 +10,12 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         return [
             PhotosServiceProvider::class,
-            GoogleServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
-        return [
-            'Photos' => Photos::class,
-            'Google' => Google::class,
-        ];
+        return [];
     }
 
     /**

@@ -16,13 +16,13 @@ trait PhotosLibrary
      */
     public function photos(): Factory
     {
-        $token = $this->photosAccessToken();
+        $token = $this->tokenForPhotoLibrary();
 
-        return Container::getInstance()->make(Factory::class)->setAccessToken($token);
+        return Container::getInstance()->make(Factory::class)->withToken($token);
     }
 
     /**
-     * Get the Access Token.
+     * @return string|array{client_id: string, client_secret: string, refresh_token: string}
      */
-    abstract protected function photosAccessToken(): array|string;
+    abstract protected function tokenForPhotoLibrary(): array|string;
 }

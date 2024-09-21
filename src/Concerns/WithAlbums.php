@@ -2,42 +2,49 @@
 
 namespace Revolution\Google\Photos\Concerns;
 
-use Google\Service\PhotosLibrary\Album;
-use Google\Service\PhotosLibrary\CreateAlbumRequest;
-use Google\Service\PhotosLibrary\Resource\Albums;
+use Google\ApiCore\ApiException;
+use Google\ApiCore\PagedListResponse;
+use Google\ApiCore\RetrySettings;
+use Google\Photos\Types\Album;
 
 trait WithAlbums
 {
     /**
      * albums.listAlbums.
+     *
+     * @param  array{pageSize?: integer, pageToken?: string, excludeNonAppCreatedData?: bool, retrySettings?: RetrySettings|array}  $optionalArgs
+     *
+     * @throws ApiException
      */
-    public function listAlbums(array $optParams = []): object
+    public function listAlbums(array $optionalArgs = []): PagedListResponse
     {
-        return $this->serviceAlbums()->listAlbums($optParams)->toSimpleObject();
+        return $this->getService()->listAlbums($optionalArgs);
     }
 
     /**
      * albums.create.
+     *
+     * @param  array{id?: string, title?: string, cover_photo_media_item_id?: string}  $data
+     * @param  array{retrySettings?: RetrySettings|array}  $optionalArgs
+     *
+     * @throws ApiException
      */
-    public function createAlbum(array $createParams = ['isWriteable' => true], array $optParams = []): object
+    public function createAlbum(array $data = [], array $optionalArgs = []): Album
     {
-        $album = new Album($createParams);
-        $request = new CreateAlbumRequest();
-        $request->setAlbum($album);
+        $album = new Album($data);
 
-        return $this->serviceAlbums()->create($request, $optParams)->toSimpleObject();
+        return $this->getService()->createAlbum($album, $optionalArgs);
     }
 
     /**
      * albums.get.
+     *
+     * @param  array{retrySettings?: RetrySettings|array}  $optionalArgs
+     *
+     * @throws ApiException
      */
-    public function album(string $albumId): object
+    public function getAlbum(string $albumId, array $optionalArgs = []): Album
     {
-        return $this->serviceAlbums()->get($albumId)->toSimpleObject();
-    }
-
-    protected function serviceAlbums(): Albums
-    {
-        return $this->getService()->albums;
+        return $this->getService()->getAlbum($albumId, $optionalArgs);
     }
 }
