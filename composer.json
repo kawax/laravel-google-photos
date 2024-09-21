@@ -18,8 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Revolution\\Google\\Photos\\": "src/",
-      "Google\\Service\\": "lib/photoslibrary_v1/"
+      "Revolution\\Google\\Photos\\": "src/"
     }
   },
   "autoload-dev": {
