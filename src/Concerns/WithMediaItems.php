@@ -5,12 +5,12 @@ namespace Revolution\Google\Photos\Concerns;
 use Google\ApiCore\ApiException;
 use Google\ApiCore\PagedListResponse;
 use Google\ApiCore\RetrySettings;
+use Google\Photos\Library\V1\AlbumPosition;
 use Google\Photos\Library\V1\BatchCreateMediaItemsResponse;
+use Google\Photos\Library\V1\Filters;
 use Google\Photos\Library\V1\NewMediaItem;
 use Google\Photos\Library\V1\SimpleMediaItem;
 use Google\Photos\Types\MediaItem;
-use Google\Service\PhotosLibrary\AlbumPosition;
-use Google\Service\PhotosLibrary\Filters;
 
 trait WithMediaItems
 {
