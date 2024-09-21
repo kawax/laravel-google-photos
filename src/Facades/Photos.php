@@ -21,7 +21,6 @@ use Revolution\Google\Photos\PhotosClient;
  * @method static Album getAlbum(string $albumId, array $optionalArgs = [])
  * @method static Factory upload(string $rawFile, string $fileName = '', string $mimeType = '')
  * @method static Factory withToken(string|array $token)
- * @method static string getToken()
  * @method static Factory setService(PhotosLibraryClient $service)
  * @method static PhotosLibraryClient getService()
  *

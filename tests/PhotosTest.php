@@ -49,14 +49,4 @@ class PhotosTest extends TestCase
 
         $this->assertInstanceOf(PhotosLibraryClient::class, $photos->getService());
     }
-
-    public function testGetToken()
-    {
-        $client = m::mock(PhotosLibraryClient::class)->shouldAllowMockingProtectedMethods();
-        $client->shouldReceive('getCredentialsWrapper->getAuthorizationHeaderCallback')->andReturn(fn () => ['authorization' => 'Bearer test']);
-
-        $token = Photos::setService($client)->getToken();
-
-        $this->assertSame('test', $token);
-    }
 }

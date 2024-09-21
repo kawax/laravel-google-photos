@@ -55,11 +55,4 @@ class PhotosClient implements Factory
 
         return $this->setService($client);
     }
-
-    public function getToken(): string
-    {
-        $token = call_user_func($this->getService()->getCredentialsWrapper()->getAuthorizationHeaderCallback());
-
-        return Str::of($token['authorization'] ?? '')->remove('Bearer ')->toString();
-    }
 }

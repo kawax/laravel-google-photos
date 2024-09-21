@@ -29,8 +29,6 @@ interface Factory
      */
     public function withToken(string|array $token): static;
 
-    public function getToken(): string;
-
     /**
      * albums.listAlbums.
      *
