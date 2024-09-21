@@ -43,8 +43,8 @@ class PhotosClient implements Factory
     {
         if (is_string($token)) {
             $token = [
-                'client_id' => config('service.google.client_id'),
-                'client_secret' => config('service.google.client_secret'),
+                'client_id' => config('services.google.client_id'),
+                'client_secret' => config('services.google.client_secret'),
                 'refresh_token' => $token,
             ];
         }
