@@ -6,9 +6,9 @@ use Google\ApiCore\ApiException;
 use Google\ApiCore\PagedListResponse;
 use Google\ApiCore\RetrySettings;
 use Google\Photos\Library\V1\BatchCreateMediaItemsResponse;
-use Google\Photos\Types\MediaItem;
-use Google\Photos\Library\V1\SimpleMediaItem;
 use Google\Photos\Library\V1\NewMediaItem;
+use Google\Photos\Library\V1\SimpleMediaItem;
+use Google\Photos\Types\MediaItem;
 use Google\Service\PhotosLibrary\AlbumPosition;
 use Google\Service\PhotosLibrary\Filters;
 
@@ -18,6 +18,7 @@ trait WithMediaItems
      * mediaItems.search.
      *
      * @param  array{albumId?: string, pageSize?: integer, pageToken?: string, filters?: Filters, orderBy?: string, retrySettings?: RetrySettings|array}  $optionalArgs
+     *
      * @throws ApiException
      */
     public function search(array $optionalArgs = []): PagedListResponse

@@ -4,11 +4,11 @@ namespace Revolution\Google\Photos;
 
 use Google\ApiCore\ValidationException;
 use Google\Auth\Credentials\UserRefreshCredentials;
+use Google\Photos\Library\V1\PhotosLibraryClient;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Conditionable;
 use Illuminate\Support\Traits\Macroable;
 use Revolution\Google\Photos\Contracts\Factory;
-use Google\Photos\Library\V1\PhotosLibraryClient;
 
 class PhotosClient implements Factory
 {
@@ -49,9 +49,9 @@ class PhotosClient implements Factory
             ];
         }
 
-        $credentials = new UserRefreshCredentials(config('google.scopes'), $token,);
+        $credentials = new UserRefreshCredentials(config('google.scopes'), $token);
 
-        $client = new PhotosLibraryClient(['credentials' => $credentials]);;
+        $client = new PhotosLibraryClient(['credentials' => $credentials]);
 
         return $this->setService($client);
     }

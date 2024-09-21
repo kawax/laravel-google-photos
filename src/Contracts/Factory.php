@@ -62,6 +62,7 @@ interface Factory
      * mediaItems.search.
      *
      * @param  array{albumId?: string, pageSize?: integer, pageToken?: string, filters?: Filters, orderBy?: string, retrySettings?: RetrySettings|array}  $optionalArgs
+     *
      * @throws ApiException
      */
     public function search(array $optionalArgs = []): PagedListResponse;
