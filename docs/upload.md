@@ -8,6 +8,8 @@
 2. Add to mediaItems by batchCreate.
 
 ```php
+use Illuminate\Http\Request;
+
 public function __invoke(Request $request)
 {
     if (!$request->hasFile('file')) {
@@ -19,8 +21,8 @@ public function __invoke(Request $request)
     $file = $request->file('file');
 
     $uploadToken = $photos->upload(
+        $file->getContent(),
         $file->getClientOriginalName(),
-        fopen($file->getRealPath(), 'r')
     );
 
     $result = $photos->batchCreate([$uploadToken]);

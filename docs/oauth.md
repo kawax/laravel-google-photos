@@ -12,13 +12,9 @@ public function redirect()
                     ->redirect();
 }
 
-/**
- *
- * @return \Illuminate\Http\Response
- */
 public function callback()
 {
-    if (!request()->has('code')) {
+    if (request()->missing('code')) {
         return redirect('/');
     }
 
@@ -36,10 +32,7 @@ public function callback()
         ],
         [
             'name'          => $user->name,
-            'email'         => $user->email,
-            'access_token'  => $user->token,
             'refresh_token' => $user->refreshToken,
-            'expires_in'    => $user->expiresIn,
         ]);
 
     auth()->login($loginUser, false);

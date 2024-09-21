@@ -2,8 +2,10 @@
 
 namespace Tests;
 
-use Google\Service\PhotosLibrary;
-use Google\Service\PhotosLibrary\Resource\MediaItems;
+use Google\ApiCore\PagedListResponse;
+use Google\Photos\Library\V1\BatchCreateMediaItemsResponse;
+use Google\Photos\Library\V1\PhotosLibraryClient;
+use Google\Photos\Types\MediaItem;
 use Mockery as m;
 use Revolution\Google\Photos\PhotosClient;
 
@@ -18,43 +20,43 @@ class MediaItemsTest extends TestCase
 
     public function testSearch()
     {
-        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceMediaItems->search->toSimpleObject')->andReturn((object) []);
+        $res = m::mock(PagedListResponse::class);
 
-        $item = $photos->search([]);
+        $client = m::mock(PhotosLibraryClient::class);
+        $client->shouldReceive('searchMediaItems')->once()->andReturn($res);
 
-        $this->assertEquals((object) [], $item);
+        $photos = new PhotosClient();
+
+        $items = $photos->setService($client)->search();
+
+        $this->assertSame($res, $items);
     }
 
     public function testCreateMedia()
     {
-        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceMediaItems->batchCreate->toSimpleObject')->andReturn((object) []);
+        $res = new BatchCreateMediaItemsResponse();
 
-        $item = $photos->batchCreate(['token']);
+        $client = m::mock(PhotosLibraryClient::class);
+        $client->shouldReceive('batchCreateMediaItems')->once()->andReturn($res);
 
-        $this->assertEquals((object) [], $item);
+        $photos = new PhotosClient();
+
+        $items = $photos->setService($client)->batchCreate(['token']);
+
+        $this->assertSame($res, $items);
     }
 
     public function testGetMedia()
     {
-        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceMediaItems->get->toSimpleObject')->andReturn((object) []);
+        $res = new MediaItem();
 
-        $item = $photos->media('test');
+        $client = m::mock(PhotosLibraryClient::class);
+        $client->shouldReceive('getMediaItem')->once()->andReturn($res);
 
-        $this->assertEquals((object) [], $item);
-    }
+        $photos = new PhotosClient();
 
-    public function testServiceMedia()
-    {
-        $service = m::mock(PhotosLibrary::class);
-        $service->mediaItems = m::mock(MediaItems::class);
+        $items = $photos->setService($client)->media('id');
 
-        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-
-        $item = $photos->setService($service)->serviceMediaItems();
-
-        $this->assertInstanceOf(MediaItems::class, $item);
+        $this->assertSame($res, $items);
     }
 }

@@ -4,7 +4,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/ac9912fd1c3bfa21a7d3/maintainability)](https://codeclimate.com/github/kawax/laravel-google-photos/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ac9912fd1c3bfa21a7d3/test_coverage)](https://codeclimate.com/github/kawax/laravel-google-photos/test_coverage)
 
-
 https://developers.google.com/photos/
 
 ## Requirements
@@ -28,10 +27,10 @@ Enable `Photos Library API`.
 
 ### config/google.php
 ```php
-    'client_id'        => env('GOOGLE_CLIENT_ID', ''),
-    'client_secret'    => env('GOOGLE_CLIENT_SECRET', ''),
-    'redirect_uri'     => env('GOOGLE_REDIRECT', ''),
-    'scopes'           => [\Google\Service\PhotosLibrary::PHOTOSLIBRARY],
+    'scopes'           => [
+        'https://www.googleapis.com/auth/photoslibrary.appendonly',
+        'https://www.googleapis.com/auth/photoslibrary.edit.appcreateddata',
+    ],
     'access_type'      => 'offline',
     'approval_prompt'  => 'force',
     'prompt'           => 'consent', //"none", "consent", "select_account" default:none
@@ -51,8 +50,6 @@ Google Photos API does not support Service Account.
 
 ### Configure .env as needed
 ```
-GOOGLE_APPLICATION_NAME=
-
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 GOOGLE_REDIRECT=

@@ -2,8 +2,9 @@
 
 namespace Tests;
 
-use Google\Service\PhotosLibrary;
-use Google\Service\PhotosLibrary\Resource\Albums;
+use Google\ApiCore\PagedListResponse;
+use Google\Photos\Library\V1\PhotosLibraryClient;
+use Google\Photos\Types\Album;
 use Mockery as m;
 use Revolution\Google\Photos\PhotosClient;
 
@@ -18,43 +19,45 @@ class AlbumsTest extends TestCase
 
     public function testListAlbums()
     {
-        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceAlbums->listAlbums->toSimpleObject')->andReturn((object) []);
+        $res = m::mock(PagedListResponse::class);
 
-        $album = $photos->listAlbums([]);
+        $client = m::mock(PhotosLibraryClient::class);
+        $client->shouldReceive('listAlbums')->once()->andReturn($res);
 
-        $this->assertEquals((object) [], $album);
+        $photos = new PhotosClient();
+
+        $album = $photos->setService($client)->listAlbums();
+
+        $this->assertSame($res, $album);
     }
 
     public function testCreateAlbum()
     {
-        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceAlbums->create->toSimpleObject')->andReturn((object) []);
+        $res = new Album();
+        $res->setTitle('title');
 
-        $album = $photos->createAlbum();
+        $client = m::mock(PhotosLibraryClient::class);
+        $client->shouldReceive('createAlbum')->once()->andReturn($res);
 
-        $this->assertEquals((object) [], $album);
+        $photos = new PhotosClient();
+
+        $album = $photos->setService($client)->createAlbum(['title' => 'title']);
+
+        $this->assertSame('title', $album->getTitle());
     }
 
     public function testGetAlbum()
     {
-        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $photos->shouldReceive('serviceAlbums->get->toSimpleObject')->andReturn((object) []);
+        $res = new Album();
+        $res->setTitle('title');
 
-        $album = $photos->album('test');
+        $client = m::mock(PhotosLibraryClient::class);
+        $client->shouldReceive('getAlbum')->once()->andReturn($res);
 
-        $this->assertEquals((object) [], $album);
-    }
+        $photos = new PhotosClient();
 
-    public function testServiceAlbum()
-    {
-        $service = m::mock(PhotosLibrary::class);
-        $service->albums = m::mock(Albums::class);
+        $album = $photos->setService($client)->album('1');
 
-        $photos = m::mock(PhotosClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-
-        $album = $photos->setService($service)->serviceAlbums();
-
-        $this->assertInstanceOf(Albums::class, $album);
+        $this->assertSame('title', $album->getTitle());
     }
 }

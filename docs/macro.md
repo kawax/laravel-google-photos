@@ -6,17 +6,19 @@ Extend any method by your self.
 
 ```php
 use Revolution\Google\Photos\Facades\Photos;
-use Google\Service\PhotosLibrary\ShareAlbumRequest;
+use Google\Photos\Types\MediaItem;
 
     public function boot()
     {
-        Photos::macro('share', function ($albumId, ShareAlbumRequest $postBody, $optParams = []) {
-            return $this->getService()->albums->share($albumId, $postBody, $optParams)->toSimpleObject();
+        Photos::macro('updateMediaItemDescription', function (string $mediaItemId, string $newDescription, array $optionalArgs = []): MediaItem {
+            return $this->getService()->updateMediaItemDescription($mediaItemId, $newDescription, $optionalArgs);
         });
     }
 ```
 
 ## Use somewhere
 ```php
-$response = Photos::share($albumId, $postBody);
+use Revolution\Google\Photos\Facades\Photos;
+
+$item = Photos::updateMediaItemDescription($mediaItemId, $newDescription);
 ```

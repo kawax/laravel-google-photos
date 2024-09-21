@@ -17,7 +17,7 @@ class TraitTest extends TestCase
 
     public function testTrait()
     {
-        Photos::shouldReceive('setAccessToken')->with('test')->once()->andReturn(m::self());
+        Photos::shouldReceive('withToken')->with('test')->once()->andReturn(m::self());
 
         $photos = (new User())->photos();
 
@@ -29,7 +29,7 @@ class User
 {
     use PhotosLibrary;
 
-    public function photosAccessToken(): array|string
+    public function tokenForPhotoLibrary(): array|string
     {
         return 'test';
     }

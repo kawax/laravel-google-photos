@@ -2,52 +2,64 @@
 
 namespace Revolution\Google\Photos;
 
-use Google\Service;
-use Google\Service\PhotosLibrary;
+use Google\ApiCore\ValidationException;
+use Google\Auth\Credentials\UserRefreshCredentials;
+use Illuminate\Support\Str;
+use Illuminate\Support\Traits\Conditionable;
 use Illuminate\Support\Traits\Macroable;
-use Revolution\Google\Client\Facades\Google;
 use Revolution\Google\Photos\Contracts\Factory;
+use Google\Photos\Library\V1\PhotosLibraryClient;
 
 class PhotosClient implements Factory
 {
     use Concerns\WithAlbums;
     use Concerns\WithMediaItems;
-    use Concerns\WithSharedAlbums;
     use Concerns\WithUploads;
     use Macroable;
+    use Conditionable;
 
-    protected PhotosLibrary $service;
+    protected PhotosLibraryClient $service;
 
-    public function setService(PhotosLibrary|Service $service): static
+    public function setService(PhotosLibraryClient $service): static
     {
         $this->service = $service;
 
         return $this;
     }
 
-    public function getService(): PhotosLibrary
+    public function getService(): PhotosLibraryClient
     {
         return $this->service;
     }
 
     /**
-     * set access_token and set new service.
+     * Set token.
+     *
+     * @param  string|array{client_id: string, client_secret: string, refresh_token: string}  $token
+     *
+     * @throws ValidationException
      */
-    public function setAccessToken(array|string $token): static
+    public function withToken(string|array $token): static
     {
-        Google::getCache()->clear();
-
-        Google::setAccessToken($token);
-
-        if (isset($token['refresh_token']) and Google::isAccessTokenExpired()) {
-            Google::fetchAccessTokenWithRefreshToken();
+        if (is_string($token)) {
+            $token = [
+                'client_id' => config('service.google.client_id'),
+                'client_secret' => config('service.google.client_secret'),
+                'refresh_token' => $token,
+            ];
         }
 
-        return $this->setService(Google::make('PhotosLibrary'));
+        $credentials = new UserRefreshCredentials(config('google.scopes'), $token,);
+
+        $client = new PhotosLibraryClient(['credentials' => $credentials]);;
+
+        return $this->setService($client);
     }
 
-    public function getAccessToken(): array
+    public function getToken(): string
     {
-        return $this->getService()->getClient()->getAccessToken();
+        $token = call_user_func($this->getService()->getCredentialsWrapper()->getAuthorizationHeaderCallback());
+
+        return Str::of($token['authorization'] ?? '')->remove('Bearer ')->toString();
     }
 }

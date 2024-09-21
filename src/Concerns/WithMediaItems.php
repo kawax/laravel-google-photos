@@ -2,36 +2,50 @@
 
 namespace Revolution\Google\Photos\Concerns;
 
-use Google\Service\PhotosLibrary\BatchCreateMediaItemsRequest;
-use Google\Service\PhotosLibrary\NewMediaItem;
-use Google\Service\PhotosLibrary\Resource\MediaItems;
-use Google\Service\PhotosLibrary\SearchMediaItemsRequest;
-use Google\Service\PhotosLibrary\SimpleMediaItem;
+use Google\ApiCore\ApiException;
+use Google\ApiCore\PagedListResponse;
+use Google\ApiCore\RetrySettings;
+use Google\Photos\Library\V1\BatchCreateMediaItemsResponse;
+use Google\Photos\Types\MediaItem;
+use Google\Photos\Library\V1\SimpleMediaItem;
+use Google\Photos\Library\V1\NewMediaItem;
+use Google\Service\PhotosLibrary\AlbumPosition;
+use Google\Service\PhotosLibrary\Filters;
 
 trait WithMediaItems
 {
     /**
      * mediaItems.search.
+     *
+     * @param  array{albumId?: string, pageSize?: integer, pageToken?: string, filters?: Filters, orderBy?: string, retrySettings?: RetrySettings|array}  $optionalArgs
+     * @throws ApiException
      */
-    public function search(array $searchParams = [], array $optParams = []): object
+    public function search(array $optionalArgs = []): PagedListResponse
     {
-        $search = new SearchMediaItemsRequest($searchParams);
-
-        return $this->serviceMediaItems()->search($search, $optParams)->toSimpleObject();
+        return $this->getService()->searchMediaItems($optionalArgs);
     }
 
     /**
      * mediaItems.get.
+     *
+     * @param  array{retrySettings?: RetrySettings|array}  $optionalArgs
+     *
+     * @throws ApiException
      */
-    public function media(string $mediaItemId, array $optParams = []): object
+    public function media(string $mediaItemId, array $optionalArgs = []): MediaItem
     {
-        return $this->serviceMediaItems()->get($mediaItemId, $optParams)->toSimpleObject();
+        return $this->getService()->getMediaItem($mediaItemId, $optionalArgs);
     }
 
     /**
      * mediaItems.batchCreate.
+     *
+     * @param  array<string>  $uploadTokens
+     * @param  array{albumId?: string, albumPosition?: AlbumPosition, retrySettings?: RetrySettings|array}  $optionalArgs
+     *
+     * @throws ApiException
      */
-    public function batchCreate(array $uploadTokens, string $albumId = '', array $optParams = []): object
+    public function batchCreate(array $uploadTokens, array $optionalArgs = []): BatchCreateMediaItemsResponse
     {
         $newMediaItems = [];
 
@@ -39,27 +53,13 @@ trait WithMediaItems
             $newMediaItems[] = $this->prepareCreate($token);
         }
 
-        $request = new BatchCreateMediaItemsRequest([
-            'newMediaItems' => $newMediaItems,
-            'albumId' => $albumId,
-        ]);
-
-        return $this->serviceMediaItems()->batchCreate($request, $optParams)->toSimpleObject();
-    }
-
-    protected function serviceMediaItems(): MediaItems
-    {
-        return $this->getService()->mediaItems;
+        return $this->getService()->batchCreateMediaItems($newMediaItems, $optionalArgs);
     }
 
     protected function prepareCreate(string $uploadToken): NewMediaItem
     {
-        $simple = new SimpleMediaItem([
-            'uploadToken' => $uploadToken,
-        ]);
+        $simple = (new SimpleMediaItem())->setUploadToken($uploadToken);
 
-        return new NewMediaItem([
-            'simpleMediaItem' => $simple,
-        ]);
+        return (new NewMediaItem())->setSimpleMediaItem($simple);
     }
 }

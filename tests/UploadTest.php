@@ -2,10 +2,9 @@
 
 namespace Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
+use Google\Photos\Library\V1\PhotosLibraryClient;
 use Mockery as m;
-use Revolution\Google\Photos\PhotosClient;
+use Revolution\Google\Photos\Facades\Photos;
 
 class UploadTest extends TestCase
 {
@@ -18,15 +17,11 @@ class UploadTest extends TestCase
 
     public function testUpload()
     {
-        $res = new Response(200, [], 'test');
-        $client = m::mock(Client::class);
-        $client->shouldReceive('post')->once()->andReturn($res);
+        $client = m::mock(PhotosLibraryClient::class);
+        $client->shouldReceive('upload')->once()->andReturn('id');
 
-        $photos = m::mock(PhotosClient::class)->makePartial();
-        $photos->shouldReceive('getService->getClient->authorize')->once()->andReturn($client);
+        $id = Photos::setService($client)->upload('file', 'name', 'plain/text');
 
-        $file = $photos->upload('name', 'file');
-
-        $this->assertSame('test', $file);
+        $this->assertSame('id', $id);
     }
 }
