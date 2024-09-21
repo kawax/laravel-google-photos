@@ -5,7 +5,6 @@ namespace Revolution\Google\Photos;
 use Google\ApiCore\ValidationException;
 use Google\Auth\Credentials\UserRefreshCredentials;
 use Google\Photos\Library\V1\PhotosLibraryClient;
-use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Conditionable;
 use Illuminate\Support\Traits\Macroable;
 use Revolution\Google\Photos\Contracts\Factory;
