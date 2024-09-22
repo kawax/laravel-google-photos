@@ -6,10 +6,12 @@
 https://developers.google.com/photos/
 
 ## Requirements
+
 - PHP >= 8.2
 - Laravel >= 11.0
 
 ## Versioning
+
 - Basic : semver
 - Drop old PHP or Laravel version : `+0.1`. composer should handle it well.
 - Support only latest major version (`master` branch), but you can PR to old branches.
@@ -21,10 +23,12 @@ composer require revolution/laravel-google-photos
 ```
 
 ### Get API Credentials
+
 from https://developers.google.com/console  
 Enable `Photos Library API`.
 
 ### config/google.php
+
 ```php
     'client_id'        => env('GOOGLE_CLIENT_ID', ''),
     'client_secret'    => env('GOOGLE_CLIENT_SECRET', ''),
@@ -56,6 +60,7 @@ Google Photos API does not support Service Account.
 ```
 
 ### .env
+
 ```
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
@@ -63,6 +68,7 @@ GOOGLE_REDIRECT=
 ```
 
 ## Usage example
+
 Currently, Google Photos Library API only allows access to **files uploaded via API**, so it is difficult to use it freely.
 
 Using it with someone else's account requires review.
@@ -88,6 +94,7 @@ with(Photos::upload(Storage::get('test.png'), 'test.png'), function (string $tok
 ```
 
 ## PhotosLibraryClient
+
 This package depends on `google/photos-library` and automatically delegates to the methods on PhotosLibraryClient.
 
 - https://github.com/google/php-photoslibrary/blob/main/src/Google/Photos/Library/V1/PhotosLibraryClient.php
@@ -100,6 +107,7 @@ $album = Photos::withToken('token')->updateAlbumTitle($albumId, $newTitle);
 ```
 
 ## PagedListResponse
+
 `listMediaItems()` and `listAlbums()` return a `PagedListResponse`, which is basically used with foreach.
 
 - https://github.com/googleapis/gax-php/blob/main/src/PagedListResponse.php
@@ -115,5 +123,22 @@ foreach ($items as $item){
 }
 ```
 
+## Create new album
+
+`PhotosLibraryResourceFactory` has various creation methods.
+
+- https://github.com/google/php-photoslibrary/blob/main/src/Google/Photos/Library/V1/PhotosLibraryResourceFactory.php
+
+```php
+use Google\Photos\Library\V1\PhotosLibraryResourceFactory;
+use Revolution\Google\Photos\Facades\Photos;
+
+$newAlbum = Photos::withToken('token')->createAlbum(PhotosLibraryResourceFactory::album('title'));
+
+dump($newAlbum->getId());
+dump($newAlbum->getTitle());
+```
+
 ## LICENSE
+
 MIT  

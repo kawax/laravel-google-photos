@@ -10,7 +10,6 @@ use Google\Photos\Library\V1\AlbumPosition;
 use Google\Photos\Library\V1\BatchCreateMediaItemsResponse;
 use Google\Photos\Library\V1\Filters;
 use Google\Photos\Library\V1\PhotosLibraryClient;
-use Google\Photos\Types\Album;
 
 /**
  * @mixin PhotosLibraryClient
@@ -29,15 +28,6 @@ interface Factory
      * @throws ValidationException
      */
     public function withToken(string|array $token): static;
-
-    /**
-     * albums.create.
-     *
-     * @param  array{retrySettings?: RetrySettings|array}  $optionalArgs
-     *
-     * @throws ApiException
-     */
-    public function createAlbum(array $data = [], array $optionalArgs = []): Album;
 
     /**
      * mediaItems.search.

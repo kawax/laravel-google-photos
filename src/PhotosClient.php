@@ -12,7 +12,6 @@ use Revolution\Google\Photos\Contracts\Factory;
 
 class PhotosClient implements Factory
 {
-    use Concerns\WithAlbums;
     use Concerns\WithMediaItems;
     use Macroable {
         __call as macroCall;

@@ -8,8 +8,7 @@ use Google\ApiCore\RetrySettings;
 use Google\Photos\Library\V1\AlbumPosition;
 use Google\Photos\Library\V1\BatchCreateMediaItemsResponse;
 use Google\Photos\Library\V1\Filters;
-use Google\Photos\Library\V1\NewMediaItem;
-use Google\Photos\Library\V1\SimpleMediaItem;
+use Google\Photos\Library\V1\PhotosLibraryResourceFactory;
 
 trait WithMediaItems
 {
@@ -38,16 +37,9 @@ trait WithMediaItems
         $newMediaItems = [];
 
         foreach ($uploadTokens as $token) {
-            $newMediaItems[] = $this->prepareCreate($token);
+            $newMediaItems[] = PhotosLibraryResourceFactory::newMediaItem($token);
         }
 
         return $this->getService()->batchCreateMediaItems($newMediaItems, $optionalArgs);
-    }
-
-    protected function prepareCreate(string $uploadToken): NewMediaItem
-    {
-        $simple = (new SimpleMediaItem())->setUploadToken($uploadToken);
-
-        return (new NewMediaItem())->setSimpleMediaItem($simple);
     }
 }
