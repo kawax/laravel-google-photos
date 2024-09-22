@@ -19,6 +19,7 @@ use Revolution\Google\Photos\PhotosClient;
  * @method static PhotosLibraryClient getService()
  *
  * @see PhotosClient
+ *
  * @mixin PhotosLibraryClient
  */
 class Photos extends Facade
