@@ -10,22 +10,9 @@ use Google\Photos\Library\V1\BatchCreateMediaItemsResponse;
 use Google\Photos\Library\V1\Filters;
 use Google\Photos\Library\V1\NewMediaItem;
 use Google\Photos\Library\V1\SimpleMediaItem;
-use Google\Photos\Types\MediaItem;
 
 trait WithMediaItems
 {
-    /**
-     * List all media items from a user's Google Photos library.
-     *
-     * @param  array{pageSize?: integer, pageToken?: string, retrySettings?: RetrySettings|array}  $optionalArgs
-     *
-     * @throws ApiException
-     */
-    public function listMediaItems(array $optionalArgs = []): PagedListResponse
-    {
-        return $this->getService()->listMediaItems($optionalArgs);
-    }
-
     /**
      * mediaItems.search.
      *
@@ -36,18 +23,6 @@ trait WithMediaItems
     public function search(array $optionalArgs = []): PagedListResponse
     {
         return $this->getService()->searchMediaItems($optionalArgs);
-    }
-
-    /**
-     * mediaItems.get.
-     *
-     * @param  array{retrySettings?: RetrySettings|array}  $optionalArgs
-     *
-     * @throws ApiException
-     */
-    public function getMediaItem(string $mediaItemId, array $optionalArgs = []): MediaItem
-    {
-        return $this->getService()->getMediaItem($mediaItemId, $optionalArgs);
     }
 
     /**

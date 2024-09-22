@@ -87,5 +87,33 @@ with(Photos::upload(Storage::get('test.png'), 'test.png'), function (string $tok
 });
 ```
 
+## PhotosLibraryClient
+This package depends on `google/photos-library` and automatically delegates to the methods on PhotosLibraryClient.
+
+- https://github.com/google/php-photoslibrary/blob/main/src/Google/Photos/Library/V1/PhotosLibraryClient.php
+- https://github.com/google/php-photoslibrary/blob/main/src/Google/Photos/Library/V1/Gapic/PhotosLibraryGapicClient.php
+
+```php
+use Revolution\Google\Photos\Facades\Photos;
+
+$album = Photos::withToken('token')->updateAlbumTitle($albumId, $newTitle);
+```
+
+## PagedListResponse
+`listMediaItems()` and `listAlbums()` return a `PagedListResponse`, which is basically used with foreach.
+
+- https://github.com/googleapis/gax-php/blob/main/src/PagedListResponse.php
+
+```php
+use Revolution\Google\Photos\Facades\Photos;
+use Google\ApiCore\PagedListResponse;
+
+$items = Photos::withToken('token')->listMediaItems();
+
+foreach ($items as $item){
+    dump($item->getBaseUrl());
+}
+```
+
 ## LICENSE
 MIT  

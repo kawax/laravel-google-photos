@@ -6,6 +6,7 @@ use Google\ApiCore\ValidationException;
 use Google\Auth\Credentials\UserRefreshCredentials;
 use Google\Photos\Library\V1\PhotosLibraryClient;
 use Illuminate\Support\Traits\Conditionable;
+use Illuminate\Support\Traits\ForwardsCalls;
 use Illuminate\Support\Traits\Macroable;
 use Revolution\Google\Photos\Contracts\Factory;
 
@@ -13,9 +14,11 @@ class PhotosClient implements Factory
 {
     use Concerns\WithAlbums;
     use Concerns\WithMediaItems;
-    use Concerns\WithUploads;
-    use Macroable;
+    use Macroable {
+        __call as macroCall;
+    }
     use Conditionable;
+    use ForwardsCalls;
 
     protected PhotosLibraryClient $service;
 
@@ -53,5 +56,19 @@ class PhotosClient implements Factory
         $client = new PhotosLibraryClient(['credentials' => $credentials]);
 
         return $this->setService($client);
+    }
+
+    /**
+     * @param  string  $method
+     * @param  array  $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        if (static::hasMacro($method)) {
+            return $this->macroCall($method, $parameters);
+        }
+
+        return $this->forwardCallTo($this->getService(), $method, $parameters);
     }
 }

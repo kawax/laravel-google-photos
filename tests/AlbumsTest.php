@@ -17,7 +17,7 @@ class AlbumsTest extends TestCase
         parent::tearDown();
     }
 
-    public function testListAlbums()
+    public function test_list_albums()
     {
         $res = m::mock(PagedListResponse::class);
 
@@ -31,7 +31,7 @@ class AlbumsTest extends TestCase
         $this->assertSame($res, $album);
     }
 
-    public function testCreateAlbum()
+    public function test_create_album()
     {
         $res = new Album();
         $res->setTitle('title');
@@ -46,7 +46,7 @@ class AlbumsTest extends TestCase
         $this->assertSame('title', $album->getTitle());
     }
 
-    public function testGetAlbum()
+    public function test_get_album()
     {
         $res = new Album();
         $res->setTitle('title');

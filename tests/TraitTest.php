@@ -15,7 +15,7 @@ class TraitTest extends TestCase
         parent::tearDown();
     }
 
-    public function testTrait()
+    public function test_trait()
     {
         Photos::shouldReceive('withToken')->with('test')->once()->andReturn(m::self());
 

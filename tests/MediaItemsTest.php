@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Google\ApiCore\ApiException;
 use Google\ApiCore\PagedListResponse;
 use Google\Photos\Library\V1\BatchCreateMediaItemsResponse;
 use Google\Photos\Library\V1\PhotosLibraryClient;
@@ -18,7 +19,7 @@ class MediaItemsTest extends TestCase
         parent::tearDown();
     }
 
-    public function testListMediaItems()
+    public function test_list_media_items()
     {
         $res = m::mock(PagedListResponse::class);
 
@@ -32,7 +33,7 @@ class MediaItemsTest extends TestCase
         $this->assertSame($res, $items);
     }
 
-    public function testSearch()
+    public function test_search()
     {
         $res = m::mock(PagedListResponse::class);
 
@@ -46,7 +47,7 @@ class MediaItemsTest extends TestCase
         $this->assertSame($res, $items);
     }
 
-    public function testCreateMedia()
+    public function test_create_media()
     {
         $res = new BatchCreateMediaItemsResponse();
 
@@ -60,7 +61,7 @@ class MediaItemsTest extends TestCase
         $this->assertSame($res, $items);
     }
 
-    public function testGetMedia()
+    public function test_get_media()
     {
         $res = new MediaItem();
 

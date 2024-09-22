@@ -15,7 +15,7 @@ class UploadTest extends TestCase
         parent::tearDown();
     }
 
-    public function testUpload()
+    public function test_upload()
     {
         $client = m::mock(PhotosLibraryClient::class);
         $client->shouldReceive('upload')->once()->andReturn('id');

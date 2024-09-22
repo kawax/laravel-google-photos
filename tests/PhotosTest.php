@@ -16,14 +16,14 @@ class PhotosTest extends TestCase
         parent::tearDown();
     }
 
-    public function testInstance()
+    public function test_instance()
     {
         $photos = new PhotosClient();
 
         $this->assertInstanceOf(PhotosClient::class, $photos);
     }
 
-    public function testService()
+    public function test_service()
     {
         $client = m::mock(PhotosLibraryClient::class);
 
@@ -32,7 +32,7 @@ class PhotosTest extends TestCase
         $this->assertInstanceOf(PhotosLibraryClient::class, Photos::getService());
     }
 
-    public function testWithTokenArray()
+    public function test_with_token_array()
     {
         $photos = Photos::withToken([
             'client_id' => 'test',
@@ -43,10 +43,17 @@ class PhotosTest extends TestCase
         $this->assertInstanceOf(PhotosLibraryClient::class, $photos->getService());
     }
 
-    public function testWithTokenString()
+    public function test_with_token_string()
     {
         $photos = Photos::withToken('test');
 
         $this->assertInstanceOf(PhotosLibraryClient::class, $photos->getService());
+    }
+
+    public function test_macro()
+    {
+        Photos::macro('test', fn () => 'test');
+
+        $this->assertSame('test', Photos::test());
     }
 }

@@ -2,6 +2,8 @@
 
 Extend any method by your self.
 
+The methods in PhotosLibraryClient are automatically delegated without the need to use macro.
+
 ## Register in AppServiceProvider.php
 
 ```php
