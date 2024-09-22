@@ -1,6 +1,3 @@
 preset: laravel
 disabled:
   - unused_use
-finder:
-  exclude:
-    - "lib"
