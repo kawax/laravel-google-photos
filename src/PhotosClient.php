@@ -8,18 +8,20 @@ use Google\Photos\Library\V1\PhotosLibraryClient;
 use Illuminate\Support\Traits\Conditionable;
 use Illuminate\Support\Traits\ForwardsCalls;
 use Illuminate\Support\Traits\Macroable;
+use Revolution\Google\Photos\Concerns\WithMediaItems;
 use Revolution\Google\Photos\Contracts\Factory;
+use RuntimeException;
 
 class PhotosClient implements Factory
 {
-    use Concerns\WithMediaItems;
+    use WithMediaItems;
+    use Conditionable;
+    use ForwardsCalls;
     use Macroable {
         __call as macroCall;
     }
-    use Conditionable;
-    use ForwardsCalls;
 
-    protected PhotosLibraryClient $service;
+    protected ?PhotosLibraryClient $service = null;
 
     public function setService(PhotosLibraryClient $service): static
     {
@@ -30,6 +32,10 @@ class PhotosClient implements Factory
 
     public function getService(): PhotosLibraryClient
     {
+        if (is_null($this->service)) {
+            throw new RuntimeException('Missing token. Set the token using withToken().');
+        }
+
         return $this->service;
     }
 
