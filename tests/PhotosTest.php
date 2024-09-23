@@ -6,6 +6,7 @@ use Google\Photos\Library\V1\PhotosLibraryClient;
 use Mockery as m;
 use Revolution\Google\Photos\Facades\Photos;
 use Revolution\Google\Photos\PhotosClient;
+use RuntimeException;
 
 class PhotosTest extends TestCase
 {
@@ -30,6 +31,13 @@ class PhotosTest extends TestCase
         Photos::setService($client);
 
         $this->assertInstanceOf(PhotosLibraryClient::class, Photos::getService());
+    }
+
+    public function test_service_error()
+    {
+        $this->expectException(RuntimeException::class);
+
+        $service = Photos::getService();
     }
 
     public function test_with_token_array()
