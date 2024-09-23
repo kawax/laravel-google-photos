@@ -88,7 +88,7 @@ use Revolution\Google\Photos\Facades\Photos;
 
 Photos::withToken(User::find(1)->refresh_token);
 
-with(Photos::upload(Storage::get('test.png'), 'test.png'), function (string $token){
+with(Photos::upload(Storage::get('test.png'), 'test.png'), function (string $token) {
     Photos::batchCreate([$token]);
 });
 ```
