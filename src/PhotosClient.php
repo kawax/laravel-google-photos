@@ -10,6 +10,7 @@ use Illuminate\Support\Traits\ForwardsCalls;
 use Illuminate\Support\Traits\Macroable;
 use Revolution\Google\Photos\Concerns\WithMediaItems;
 use Revolution\Google\Photos\Contracts\Factory;
+use Revolution\Google\Photos\Support\Token;
 use RuntimeException;
 
 class PhotosClient implements Factory
@@ -48,13 +49,7 @@ class PhotosClient implements Factory
      */
     public function withToken(string|array $token): static
     {
-        if (is_string($token)) {
-            $token = [
-                'client_id' => config('google.client_id'),
-                'client_secret' => config('google.client_secret'),
-                'refresh_token' => $token,
-            ];
-        }
+        $token = Token::refreshArray($token);
 
         $credentials = new UserRefreshCredentials(config('google.scopes'), $token);
 

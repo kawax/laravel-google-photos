@@ -26,6 +26,15 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        //
+        $app['config']->set('google', [
+            'scopes' => [
+                'https://www.googleapis.com/auth/photoslibrary.appendonly',
+                'https://www.googleapis.com/auth/photoslibrary.readonly.appcreateddata',
+                'https://www.googleapis.com/auth/photoslibrary.edit.appcreateddata',
+                'https://www.googleapis.com/auth/photospicker.mediaitems.readonly',
+            ],
+            'client_id' => 'test',
+            'client_secret' => 'test',
+        ]);
     }
 }
