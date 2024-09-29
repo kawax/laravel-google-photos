@@ -37,6 +37,7 @@ Enable `Photos Library API`.
         'https://www.googleapis.com/auth/photoslibrary.appendonly',
         'https://www.googleapis.com/auth/photoslibrary.readonly.appcreateddata',
         'https://www.googleapis.com/auth/photoslibrary.edit.appcreateddata',
+        'https://www.googleapis.com/auth/photospicker.mediaitems.readonly',
     ],
     'access_type'      => 'offline',
     'approval_prompt'  => 'force',
@@ -138,6 +139,9 @@ $newAlbum = Photos::withToken('token')->createAlbum(PhotosLibraryResourceFactory
 dump($newAlbum->getId());
 dump($newAlbum->getTitle());
 ```
+
+## Picker
+[Picker API](./docs/picker.md)
 
 ## LICENSE
 
