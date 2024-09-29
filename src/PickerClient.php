@@ -24,7 +24,7 @@ class PickerClient
     }
 
     /**
-     * sessions.create
+     * sessions.create.
      *
      * @return array PickingSession
      */
@@ -37,9 +37,9 @@ class PickerClient
     }
 
     /**
-     * sessions.get
+     * sessions.get.
      *
-     * @param  string  $id SessionID
+     * @param  string  $id  SessionID
      * @return array PickingSession
      */
     public function get(string $id): array
@@ -50,9 +50,9 @@ class PickerClient
     }
 
     /**
-     * sessions.delete
+     * sessions.delete.
      *
-     * @param  string  $id SessionID
+     * @param  string  $id  SessionID
      */
     public function delete(string $id): mixed
     {
@@ -62,9 +62,9 @@ class PickerClient
     }
 
     /**
-     * mediaItems.list
+     * mediaItems.list.
      *
-     * @param  string  $id SessionID
+     * @param  string  $id  SessionID
      */
     public function list(string $id, ?int $pageSize = null, ?string $pageToken = null): array
     {

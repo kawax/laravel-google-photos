@@ -3,7 +3,6 @@
 namespace Tests;
 
 use Illuminate\Support\Facades\Http;
-
 use Revolution\Google\Photos\Facades\Picker;
 
 class PickerTest extends TestCase

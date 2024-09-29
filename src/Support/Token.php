@@ -8,7 +8,6 @@ class Token
 {
     /**
      * @param  string|array{client_id: string, client_secret: string, refresh_token: string}  $refresh_token
-     *
      * @return string access_token
      *
      * @codeCoverageIgnore
