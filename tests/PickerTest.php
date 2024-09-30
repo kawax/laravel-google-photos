@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Revolution\Google\Photos\Facades\Picker;
 
@@ -14,6 +15,10 @@ class PickerTest extends TestCase
         $res = Picker::withToken('token')->create();
 
         $this->assertSame('test', $res['id']);
+
+        Http::assertSent(function (Request $request) {
+            return $request->url() === 'https://photospicker.googleapis.com/v1/sessions';
+        });
     }
 
     public function test_get()
@@ -23,6 +28,10 @@ class PickerTest extends TestCase
         $res = Picker::withToken('token')->get('test');
 
         $this->assertSame('test', $res['id']);
+
+        Http::assertSent(function (Request $request) {
+            return $request->url() === 'https://photospicker.googleapis.com/v1/sessions/test';
+        });
     }
 
     public function test_delete()
@@ -32,6 +41,10 @@ class PickerTest extends TestCase
         $res = Picker::withToken('token')->delete('test');
 
         $this->assertSame([], $res);
+
+        Http::assertSent(function (Request $request) {
+            return $request->url() === 'https://photospicker.googleapis.com/v1/sessions/test';
+        });
     }
 
     public function test_list()
@@ -41,5 +54,20 @@ class PickerTest extends TestCase
         $res = Picker::withToken('token')->list(id: 'test');
 
         $this->assertSame('next', $res['nextPageToken']);
+
+        Http::assertSent(function (Request $request) {
+            return $request->url() === 'https://photospicker.googleapis.com/v1/mediaItems?sessionId=test';
+        });
+    }
+
+    public function test_endpoint()
+    {
+        Http::fake(fn () => Http::response([]));
+
+        $res = Picker::withToken('token')->endpoint('https://example.com/v1')->create();
+
+        Http::assertSent(function (Request $request) {
+            return $request->url() === 'https://example.com/v1/sessions';
+        });
     }
 }

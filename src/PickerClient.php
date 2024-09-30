@@ -11,7 +11,7 @@ class PickerClient
     use Conditionable;
     use Macroable;
 
-    protected const ENDPOINT = 'https://photospicker.googleapis.com/v1/';
+    protected string $endpoint = 'https://photospicker.googleapis.com/v1';
 
     protected string $token;
 
@@ -30,7 +30,7 @@ class PickerClient
     public function create(): array
     {
         return Http::withToken($this->token)
-            ->post(self::ENDPOINT.'sessions', [
+            ->post($this->endpoint.'/sessions', [
                 'id' => '',
             ])->json();
     }
@@ -44,7 +44,7 @@ class PickerClient
     public function get(string $id): array
     {
         return Http::withToken($this->token)
-            ->get(self::ENDPOINT.'sessions/'.$id)
+            ->get($this->endpoint.'/sessions/'.$id)
             ->json();
     }
 
@@ -56,7 +56,7 @@ class PickerClient
     public function delete(string $id): mixed
     {
         return Http::withToken($this->token)
-            ->delete(self::ENDPOINT.'sessions/'.$id)
+            ->delete($this->endpoint.'/sessions/'.$id)
             ->json();
     }
 
@@ -68,11 +68,18 @@ class PickerClient
     public function list(string $id, ?int $pageSize = null, ?string $pageToken = null): array
     {
         return Http::withToken($this->token)
-            ->get(self::ENDPOINT.'mediaItems', [
+            ->get($this->endpoint.'/mediaItems', [
                 'sessionId' => $id,
                 'pageSize' => $pageSize,
                 'pageToken' => $pageToken,
             ])
             ->json();
+    }
+
+    public function endpoint(string $endpoint): static
+    {
+        $this->endpoint = $endpoint;
+
+        return $this;
     }
 }
