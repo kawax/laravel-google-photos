@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
 use Revolution\Google\Photos\PickerClient;
 
 /**
- * @method static static withToken(string|array $token)
+ * @method static static withToken(string|array $access_token)
  *
  * @mixin PickerClient
  */
