@@ -6,6 +6,8 @@ use Google\Auth\Credentials\UserRefreshCredentials;
 
 class Token
 {
+    protected static ?string $fake_token = null;
+
     /**
      * @param  string|array{client_id: string, client_secret: string, refresh_token: string}  $refresh_token
      * @return string access_token
@@ -14,7 +16,11 @@ class Token
      */
     public static function toAccessToken(string|array $refresh_token): string
     {
-        $refresh_token = self::refreshArray($refresh_token);
+        if (! empty(static::$fake_token)) {
+            return static::$fake_token;
+        }
+
+        $refresh_token = static::refreshArray($refresh_token);
 
         $credentials = new UserRefreshCredentials(config('google.scopes'), $refresh_token);
 
@@ -35,5 +41,13 @@ class Token
         }
 
         return $refresh_token;
+    }
+
+    /**
+     * Set fake token for testing.
+     */
+    public static function fake(?string $token = 'token'): void
+    {
+        static::$fake_token = $token;
     }
 }

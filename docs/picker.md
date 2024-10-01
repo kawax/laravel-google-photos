@@ -16,6 +16,27 @@ $token = Token::toAccessToken('refresh_token');
 session(['picker_token' => $token]);
 ```
 
+### Mock `Token::toAccessToken()` in testing
+
+You can use `Token::fake()` to fix the token returned by `Token::toAccessToken()`.
+
+```php
+use Revolution\Google\Photos\Support\Token;
+
+Token::fake(token: 'test');
+
+$token = Token::toAccessToken('refresh_token');
+// test
+```
+
+Reset mock
+
+```php
+use Revolution\Google\Photos\Support\Token;
+
+Token::fake(token: null);
+```
+
 ## Session create
 
 ```php

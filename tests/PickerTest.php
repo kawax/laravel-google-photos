@@ -5,6 +5,7 @@ namespace Tests;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Revolution\Google\Photos\Facades\Picker;
+use Revolution\Google\Photos\Support\Token;
 
 class PickerTest extends TestCase
 {
@@ -69,5 +70,16 @@ class PickerTest extends TestCase
         Http::assertSent(function (Request $request) {
             return $request->url() === 'https://example.com/v1/sessions';
         });
+    }
+
+    public function test_token_fake()
+    {
+        Token::fake(token: 'test');
+
+        $token = Token::toAccessToken('token');
+
+        Token::fake(token: null);
+
+        $this->assertSame('test', $token);
     }
 }
