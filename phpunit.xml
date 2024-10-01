@@ -10,7 +10,6 @@
         </include>
         <exclude>
             <directory>src/Providers/</directory>
-            <directory>src/Contracts/</directory>
         </exclude>
     </source>
     <coverage>
