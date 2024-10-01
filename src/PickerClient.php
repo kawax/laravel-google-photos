@@ -25,7 +25,7 @@ class PickerClient
     /**
      * sessions.create.
      *
-     * @return array PickingSession
+     * @return array{id: string, pickerUri: string, pollingConfig: array{pollInterval: string, timeoutIn: string}, mediaItemsSet: bool}
      */
     public function create(): array
     {
@@ -39,7 +39,7 @@ class PickerClient
      * sessions.get.
      *
      * @param  string  $id  SessionID
-     * @return array PickingSession
+     * @return array{id: string, pickerUri: string, pollingConfig: array{pollInterval: string, timeoutIn: string}, mediaItemsSet: bool}
      */
     public function get(string $id): array
     {
@@ -64,6 +64,7 @@ class PickerClient
      * mediaItems.list.
      *
      * @param  string  $id  SessionID
+     * @return array{mediaItems: array, nextPageToken?: string}
      */
     public function list(string $id, ?int $pageSize = null, ?string $pageToken = null): array
     {
