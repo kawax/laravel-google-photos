@@ -10,9 +10,6 @@ class Token
 
     /**
      * @param  string|array{client_id: string, client_secret: string, refresh_token: string}  $refresh_token
-     * @return string access_token
-     *
-     * @codeCoverageIgnore
      */
     public static function toAccessToken(string|array $refresh_token): string
     {
@@ -20,11 +17,13 @@ class Token
             return static::$fake_token;
         }
 
+        // @codeCoverageIgnoreStart
         $refresh_token = static::refreshArray($refresh_token);
 
         $credentials = new UserRefreshCredentials(config('google.scopes'), $refresh_token);
 
         return $credentials->fetchAuthToken()['access_token'] ?? '';
+        // @codeCoverageIgnoreEnd
     }
 
     /**
