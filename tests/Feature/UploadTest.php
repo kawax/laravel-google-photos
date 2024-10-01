@@ -1,10 +1,11 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
 use Google\Photos\Library\V1\PhotosLibraryClient;
 use Mockery as m;
 use Revolution\Google\Photos\Facades\Photos;
+use Tests\TestCase;
 
 class UploadTest extends TestCase
 {

@@ -1,12 +1,13 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
 use Google\Photos\Library\V1\PhotosLibraryClient;
 use Mockery as m;
 use Revolution\Google\Photos\Facades\Photos;
 use Revolution\Google\Photos\PhotosClient;
 use RuntimeException;
+use Tests\TestCase;
 
 class PhotosTest extends TestCase
 {

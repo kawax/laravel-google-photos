@@ -1,10 +1,11 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
 use Mockery as m;
 use Revolution\Google\Photos\Facades\Photos;
 use Revolution\Google\Photos\Traits\PhotosLibrary;
+use Tests\TestCase;
 
 class TraitTest extends TestCase
 {

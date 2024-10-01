@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
 use Google\ApiCore\PagedListResponse;
 use Google\Photos\Library\V1\PhotosLibraryClient;
@@ -8,6 +8,7 @@ use Google\Photos\Library\V1\PhotosLibraryResourceFactory;
 use Google\Photos\Types\Album;
 use Mockery as m;
 use Revolution\Google\Photos\PhotosClient;
+use Tests\TestCase;
 
 class AlbumsTest extends TestCase
 {

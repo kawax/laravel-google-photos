@@ -4,23 +4,23 @@
          bootstrap="vendor/autoload.php"
          colors="true"
 >
-  <source>
-    <include>
-      <directory>src/</directory>
-    </include>
-    <exclude>
-      <directory>src/Providers/</directory>
-      <directory>src/Contracts/</directory>
-    </exclude>
-  </source>
-  <coverage>
-    <report>
-      <clover outputFile="build/logs/clover.xml"/>
-    </report>
-  </coverage>
-  <testsuites>
-    <testsuite name="Test Suite">
-      <directory>tests</directory>
-    </testsuite>
-  </testsuites>
+    <source>
+        <include>
+            <directory>src/</directory>
+        </include>
+        <exclude>
+            <directory>src/Providers/</directory>
+            <directory>src/Contracts/</directory>
+        </exclude>
+    </source>
+    <coverage>
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+        </report>
+    </coverage>
+    <testsuites>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>

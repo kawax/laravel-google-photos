@@ -1,11 +1,12 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Revolution\Google\Photos\Facades\Picker;
 use Revolution\Google\Photos\Support\Token;
+use Tests\TestCase;
 
 class PickerTest extends TestCase
 {

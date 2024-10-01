@@ -1,14 +1,14 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
-use Google\ApiCore\ApiException;
 use Google\ApiCore\PagedListResponse;
 use Google\Photos\Library\V1\BatchCreateMediaItemsResponse;
 use Google\Photos\Library\V1\PhotosLibraryClient;
 use Google\Photos\Types\MediaItem;
 use Mockery as m;
 use Revolution\Google\Photos\PhotosClient;
+use Tests\TestCase;
 
 class MediaItemsTest extends TestCase
 {
