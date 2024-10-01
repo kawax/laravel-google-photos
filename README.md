@@ -25,7 +25,7 @@ composer require revolution/laravel-google-photos
 ### Get API Credentials
 
 from https://developers.google.com/console  
-Enable `Photos Library API`.
+Enable `Photos Library API` and `Google Photos Picker API`.
 
 ### config/google.php
 
