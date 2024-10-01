@@ -18,7 +18,7 @@ session(['picker_token' => $token]);
 
 ### Mock `Token::toAccessToken()` in testing
 
-You can use `Token::fake()` to fix the token returned by `Token::toAccessToken()`.
+You can use `Token::fake()` to return a fixed token from `Token::toAccessToken()`,.
 
 ```php
 use Revolution\Google\Photos\Support\Token;
