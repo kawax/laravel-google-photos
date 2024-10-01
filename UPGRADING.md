@@ -10,8 +10,7 @@ https://developers.googleblog.com/en/google-photos-picker-api-launch-and-library
 - Many method arguments and return values have been changed.
 - `config/google.php` is still used.
 - share: Deleted.
+- Use the [Picker API](./docs/picker.md) to handle files other than those uploaded via the API
 
 > you can only access and manage content that was created by your application.
 > https://developers.google.com/photos/library/guides/get-started-library
-
-- Use the [Picker API](./docs/picker.md) to handle files other than those uploaded via the API
