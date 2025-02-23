@@ -9,7 +9,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.2",
-    "illuminate/support": "^11.0",
+    "illuminate/support": "^11.0||^12.0",
     "revolution/laravel-google-sheets": "^7.0",
     "google/photos-library": "^1.7"
   },
