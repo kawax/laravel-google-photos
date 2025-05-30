@@ -1,3 +1,0 @@
-preset: laravel
-disabled:
-  - unused_use
