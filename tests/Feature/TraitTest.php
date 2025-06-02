@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class TraitTest extends TestCase
 {
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         m::close();
 
@@ -20,7 +20,7 @@ class TraitTest extends TestCase
     {
         Photos::shouldReceive('withToken')->with('test')->once()->andReturn(m::self());
 
-        $photos = (new User())->photos();
+        $photos = (new User)->photos();
 
         $this->assertNotNull($photos);
     }
