@@ -12,7 +12,7 @@ use Tests\TestCase;
 
 class MediaItemsTest extends TestCase
 {
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         m::close();
 
@@ -26,7 +26,7 @@ class MediaItemsTest extends TestCase
         $client = m::mock(PhotosLibraryClient::class);
         $client->shouldReceive('listMediaItems')->once()->andReturn($res);
 
-        $photos = new PhotosClient();
+        $photos = new PhotosClient;
 
         $items = $photos->setService($client)->listMediaItems();
 
@@ -40,7 +40,7 @@ class MediaItemsTest extends TestCase
         $client = m::mock(PhotosLibraryClient::class);
         $client->shouldReceive('searchMediaItems')->once()->andReturn($res);
 
-        $photos = new PhotosClient();
+        $photos = new PhotosClient;
 
         $items = $photos->setService($client)->search();
 
@@ -49,12 +49,12 @@ class MediaItemsTest extends TestCase
 
     public function test_create_media()
     {
-        $res = new BatchCreateMediaItemsResponse();
+        $res = new BatchCreateMediaItemsResponse;
 
         $client = m::mock(PhotosLibraryClient::class);
         $client->shouldReceive('batchCreateMediaItems')->once()->andReturn($res);
 
-        $photos = new PhotosClient();
+        $photos = new PhotosClient;
 
         $items = $photos->setService($client)->batchCreate(['token']);
 
@@ -63,12 +63,12 @@ class MediaItemsTest extends TestCase
 
     public function test_get_media()
     {
-        $res = new MediaItem();
+        $res = new MediaItem;
 
         $client = m::mock(PhotosLibraryClient::class);
         $client->shouldReceive('getMediaItem')->once()->andReturn($res);
 
-        $photos = new PhotosClient();
+        $photos = new PhotosClient;
 
         $items = $photos->setService($client)->getMediaItem('id');
 

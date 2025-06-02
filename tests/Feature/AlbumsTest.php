@@ -12,7 +12,7 @@ use Tests\TestCase;
 
 class AlbumsTest extends TestCase
 {
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         m::close();
 
@@ -26,7 +26,7 @@ class AlbumsTest extends TestCase
         $client = m::mock(PhotosLibraryClient::class);
         $client->shouldReceive('listAlbums')->once()->andReturn($res);
 
-        $photos = new PhotosClient();
+        $photos = new PhotosClient;
 
         $album = $photos->setService($client)->listAlbums();
 
@@ -35,13 +35,13 @@ class AlbumsTest extends TestCase
 
     public function test_create_album()
     {
-        $res = new Album();
+        $res = new Album;
         $res->setTitle('title');
 
         $client = m::mock(PhotosLibraryClient::class);
         $client->shouldReceive('createAlbum')->once()->andReturn($res);
 
-        $photos = new PhotosClient();
+        $photos = new PhotosClient;
 
         $album = $photos->setService($client)->createAlbum(PhotosLibraryResourceFactory::album('title'));
 
@@ -50,13 +50,13 @@ class AlbumsTest extends TestCase
 
     public function test_get_album()
     {
-        $res = new Album();
+        $res = new Album;
         $res->setTitle('title');
 
         $client = m::mock(PhotosLibraryClient::class);
         $client->shouldReceive('getAlbum')->once()->andReturn($res);
 
-        $photos = new PhotosClient();
+        $photos = new PhotosClient;
 
         $album = $photos->setService($client)->getAlbum('1');
 

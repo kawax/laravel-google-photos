@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class UploadTest extends TestCase
 {
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         m::close();
 

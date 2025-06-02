@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 class PhotosTest extends TestCase
 {
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         m::close();
 
@@ -20,7 +20,7 @@ class PhotosTest extends TestCase
 
     public function test_instance()
     {
-        $photos = new PhotosClient();
+        $photos = new PhotosClient;
 
         $this->assertInstanceOf(PhotosClient::class, $photos);
     }

@@ -66,7 +66,7 @@ class PhotosClient implements Factory
     /**
      * mediaItems.search.
      *
-     * @param  array{albumId?: string, pageSize?: integer, pageToken?: string, filters?: Filters, orderBy?: string, retrySettings?: RetrySettings|array}  $optionalArgs
+     * @param  array{albumId?: string, pageSize?: int, pageToken?: string, filters?: Filters, orderBy?: string, retrySettings?: RetrySettings|array}  $optionalArgs
      *
      * @throws ApiException
      */
