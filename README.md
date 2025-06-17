@@ -20,6 +20,8 @@ This package enables Laravel applications to:
 
 ```bash
 composer require revolution/laravel-google-photos
+
+php artisan vendor:publish --tag="google-config"
 ```
 
 ### 2. Get Google API Credentials
@@ -42,7 +44,7 @@ Add to your `config/services.php`:
 ],
 ```
 
-Create `config/google.php`:
+Edit `config/google.php`:
 
 ```php
 <?php
