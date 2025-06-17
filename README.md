@@ -1,5 +1,8 @@
 # Google Photos API for Laravel
 
+[![Maintainability](https://qlty.sh/badges/70d6e01e-6c2d-40ba-985b-769820516ea7/maintainability.svg)](https://qlty.sh/gh/invokable/projects/laravel-google-photos)
+[![Code Coverage](https://qlty.sh/badges/70d6e01e-6c2d-40ba-985b-769820516ea7/test_coverage.svg)](https://qlty.sh/gh/invokable/projects/laravel-google-photos)
+
 A Laravel package providing seamless integration with the Google Photos Library API and Google Photos Picker API. Upload photos, manage albums, and interact with Google Photos directly from your Laravel applications.
 
 ## Overview
