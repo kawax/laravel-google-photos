@@ -264,7 +264,7 @@ Token::fake(token: null);
 ⚠️ **CRITICAL**: The Copilot firewall causes errors when connecting to `www.googleapis.com`
 
 - Google API calls will fail in the Copilot development environment
-- This affects testing and development of Google Sheets functionality
+- This affects testing and development of Google API functionality
 - GitHub Actions and production environments have no such restrictions
 - **Workaround**: Use mock data or skip API calls when testing in Copilot environment
 - Real API functionality should be tested in GitHub Actions or local development environments
