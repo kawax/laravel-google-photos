@@ -13,6 +13,8 @@ https://developers.google.com/photos/
 composer require revolution/laravel-google-photos
 ```
 
+## Authentication
+
 ### Get API Credentials
 
 from https://developers.google.com/console  
