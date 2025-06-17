@@ -97,6 +97,8 @@ $result = Photos::batchCreate([$uploadToken]);
 
 ```bash
 composer require revolution/laravel-google-photos
+
+php artisan vendor:publish --tag="google-config"
 ```
 
 ## Authentication
