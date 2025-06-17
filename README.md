@@ -41,7 +41,7 @@ Currently, you can only access files uploaded via the API.
 
 `'access_type' => 'offline'` is required to obtain a refresh token.
 
-**⚠️Google Photos API does not support Service Account.**
+**⚠️ Google Photos API does not support Service Account and API key.**
 
 ### config/service.php for Socialite
 
