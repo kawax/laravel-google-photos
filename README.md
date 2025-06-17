@@ -410,10 +410,8 @@ Google Photos API has rate limits and quotas. See the [official documentation](h
 
 ## Related Packages
 
-This package is part of the Revolution Google API suite:
-
-- **[laravel-google-sheets](https://github.com/revolution/laravel-google-sheets)** - Google Sheets API integration
-- **[laravel-google-searchconsole](https://github.com/revolution/laravel-google-searchconsole)** - Google Search Console API integration
+- **[laravel-google-sheets](https://github.com/invokable/laravel-google-sheets)** - Google Sheets API integration
+- **[laravel-google-searchconsole](https://github.com/invokable/laravel-google-searchconsole)** - Google Search Console API integration
 
 ## Resources
 
