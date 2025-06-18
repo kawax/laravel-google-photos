@@ -64,7 +64,6 @@ return [
         'https://www.googleapis.com/auth/photospicker.mediaitems.readonly',
     ],
     'access_type'      => 'offline',
-    'approval_prompt'  => 'force',
     'prompt'           => 'consent',
 ];
 ```
