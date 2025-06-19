@@ -59,7 +59,7 @@ return [
         'https://www.googleapis.com/auth/photoslibrary.sharing',
     ],
     'access_type' => 'offline',
-    'approval_prompt' => 'force',
+    'prompt' => 'consent select_account',
 ];
 ```
 
@@ -153,7 +153,7 @@ public function redirect()
         ->scopes(config('google.scopes'))
         ->with([
             'access_type' => config('google.access_type'),
-            'approval_prompt' => config('google.approval_prompt'),
+            'prompt' => config('google.prompt'),
         ])
         ->redirect();
 }

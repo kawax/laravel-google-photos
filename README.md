@@ -64,7 +64,7 @@ return [
         'https://www.googleapis.com/auth/photospicker.mediaitems.readonly',
     ],
     'access_type'      => 'offline',
-    'prompt'           => 'consent',
+    'prompt'           => 'consent select_account',
 ];
 ```
 
@@ -150,7 +150,7 @@ public function redirect()
         ->scopes(config('google.scopes'))
         ->with([
             'access_type' => config('google.access_type'),
-            'approval_prompt' => config('google.approval_prompt'),
+            'prompt' => config('google.prompt'),
         ])
         ->redirect();
 }
